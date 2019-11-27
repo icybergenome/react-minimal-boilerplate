@@ -1,5 +1,5 @@
 import React from 'react';
-import {getForm} from './form.js';
+import Form from './Form.js';
 
 
 
@@ -7,7 +7,7 @@ import {getForm} from './form.js';
 const App = () => {
   return (
      <div > 
-        
+        <Form />
      </div>
   
   )
