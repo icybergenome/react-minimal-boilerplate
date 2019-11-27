@@ -10,7 +10,8 @@ const Form = () => {
        event.preventDefault();
        const a = parseInt(event.target.firstvalue.value);
        const b = parseInt(event.target.secondvalue.value);
-       const result = doIt(a,b,"+");
+       const ch = "+";
+       const result = doIt(a,b,ch);
        setOutput(result);
       }
  
@@ -27,7 +28,13 @@ const Form = () => {
              type="text"
              name="secondvalue"
              /> <br /> <br /> 
-             <button type ="submit"> Click to get Answer!</button>
+             {/* <button type ="submit"> Click to get Answer!</button> */}
+             <select onChange={perAction}>
+                <option value="+">Add</option>
+                <option value="-">Sub</option>
+                <option value="*">Multi</option>
+                <option value="/">Div</option>
+             </select>
              <div> Output is : {output} </div>
           </form>
 
