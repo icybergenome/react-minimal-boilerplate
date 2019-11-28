@@ -2,13 +2,15 @@ import React,{useState} from 'react';
 import  doIt from "./calculator.js"
        
 const Form = () => {
+
    const [output, setOutput]= useState(0);
    const [formData, setFormData] = useState({})
    let operation = "";
+
    const updateFormData = (event) => {
+
       const data = {...formData};
-      console.log('@@@@@', event.target.value, event.target.name);
-      //data.firstvalue = event.target.value;
+
       switch(event.target.name)
       {
          case "firstValue":
@@ -19,15 +21,14 @@ const Form = () => {
          break;
          case "arithM":
             data.arithM= event.target.value;
-            operation = doIt(data.firstValue,data.secondValue,data.arithM);
-         console.log('output',data, operation);
-         setOutput(operation);
-            // performCalulation();
+            performCalulation();
          break;
       }
       setFormData(data);
-      // const performCalulation = ()=> {
-         
+      const performCalulation = ()=> {
+         operation = doIt(firstValue,secondValue,arithM);
+         console.log('output',data, operation);
+         setOutput(operation);
       // }
    
    }
