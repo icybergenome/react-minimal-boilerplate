@@ -44,6 +44,7 @@ const Form = () => {
                 <option value="*">*</option>
                 <option value="/">/</option>
              </select>
+             <br /> <br />
              <div> Output is : {output} </div>
           </form>
 
