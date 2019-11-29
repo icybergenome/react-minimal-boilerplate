@@ -2,12 +2,12 @@ import React,{useState} from 'react';
 import  doIt from "./calculator.js"
        
 const Form = () => {
-
+   
    const [output, setOutput]= useState(0);
    const [formData, setFormData] = useState({})
-   let operation = "";
+    let operation = "";
 
-   const updateFormData = (event) => {
+    const updateFormData = (event) => {
 
       const data = {...formData};
 
@@ -20,19 +20,33 @@ const Form = () => {
           data.secondValue = event.target.value;
          break;
          case "arithM":
-            data.arithM= event.target.value;
-            performCalulation();
-         break;
+         data.arithM= event.target.value;
+         if(formData.firstValue === "" && formData.secondValue === ""){
+            const err = "Please fill the above two feilds first!";
+            setOutput(err);
+            
+         }
+         else {
+
+            operation = doIt(data.firstValue,data.secondValue,data.arithM);
+            setOutput(operation);
+         }
+         
       }
       setFormData(data);
-      const performCalulation = ()=> {
-         operation = doIt(firstValue,secondValue,arithM);
-         console.log('output',data, operation);
-         setOutput(operation);
+      // console.log(formData);
+      // if(formData.arithM === data.arithM){
+         
+      //    performCalulation();
       // }
-   
+      
    }
-
+      // const performCalulation = ()=> {
+      //    operation = doIt(formData.firstValue,formData.secondValue,formData.arithM);
+      //    setOutput(operation);
+   
+      // }
+     
       // function perfAction(event){
       //     event.preventDefault();
       //     let a = parseInt(event.target.firstvalue.value);
@@ -40,7 +54,6 @@ const Form = () => {
       //     res = event.target.arithM.value;
       //     const result = doIt(a,b,res);
       //     setOutput(result);
-      // }
       
     return (
         
@@ -50,17 +63,20 @@ const Form = () => {
                type="text"
                name="firstValue"
                onChange={updateFormData}
+               
              />
              <p>Enter second value:</p>
              <input
                type="text"
                name="secondValue"
                onChange={updateFormData}
+               
              />  
               <br /> <br />
               
              <select name="arithM" onChange={updateFormData}>
-                
+
+                <option value="">Select One Option!</option>
                 <option value="+">+</option>
                 <option value="-">-</option>
                 <option value="*">*</option>
