@@ -21,7 +21,7 @@ const Form = () => {
          break;
          case "arithM":
          data.arithM= event.target.value;
-         if(formData.firstValue === "" && formData.secondValue === ""){
+         if(formData.firstValue === "" || formData.secondValue === ""){
             const err = "Please fill the above two feilds first!";
             setOutput(err);
             
