@@ -3,4 +3,15 @@
 .heading{
    color:  $title-color;
 }
+.setPosition{
+ display: flex;
+ justify-content: center ;
+
+ .field1{
+     border: 1px solid gray;
+ }
+ .field1:hover {
+     border:1px solid blue;
+  }
+}
  

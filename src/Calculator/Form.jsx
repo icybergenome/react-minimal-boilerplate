@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import  doIt from "./calculator.jsx"
-import "./index.module.scss"
+import styles from "./index.module.scss"
        
 const Form = () => {
    
@@ -30,50 +30,39 @@ const Form = () => {
    }
     const computeData = (event)=> {
       
-           if(!formData.firstValue || !formData.secondValue){
-            const err = "Please fill the above feilds first!";
-            setOutput(err); 
-           }
-           else {
-               if(isNaN(formData.firstValue) || isNaN(formData.secondValue)) {
-               const set = "Please Enter Number in Feilds!";
-               setOutput(set);
-               }
-               else {
-                  if(formData.secondValue === '0' && formData.arithM === '/'){
-                     setOutput("Divisor should not be zero! Please enter correct divisor");
-                  } 
-                  else {
-                     operation = doIt(formData.firstValue,formData.secondValue,formData.arithM);
-                     setOutput(operation);
-                  }
-                  
-               }
-            
-             }
-             event.preventDefault();
+      if(!formData.firstValue || !formData.secondValue){
+      const err = "Please fill the above feilds first!";
+      setOutput(err); 
       }
-      // const performCalulation = ()=> {
-      //    operation = doIt(formData.firstValue,formData.secondValue,formData.arithM);
-      //    setOutput(operation);
-   
-      // }
-     
-      // function perfAction(event){
-      //     event.preventDefault();
-      //     let a = parseInt(event.target.firstvalue.value);
-      //     let b = parseInt(event.target.secondvalue.value);
-      //     res = event.target.arithM.value;
-      //     const result = doIt(a,b,res);
-      //     setOutput(result);
+      else {
+         if(isNaN(formData.firstValue) || isNaN(formData.secondValue)) {
+         const set = "Please Enter Number in Feilds!";
+         setOutput(set);
+         }
+         else {
+            if(formData.secondValue === '0' && formData.arithM === '/'){
+               setOutput("Divisor should not be zero! Please enter correct divisor");
+            } 
+            else {
+               operation = doIt(formData.firstValue,formData.secondValue,formData.arithM);
+               setOutput(operation);
+            }
+            
+         }
       
+         }
+         event.preventDefault();
+      }
+     
     return (
-      //   <p>Calculator!</p>
+      <div className="setPosition">
           <form name="myForm" onSubmit={computeData} >
+             
              <h1 className="heading">Calculator!</h1>
              <p>Enter first value:</p>
              <label>
              <input
+               className="field1"
                type="text"
                name="firstValue"
                placeholder = "First Value"
@@ -86,7 +75,7 @@ const Form = () => {
              <input
                type="text"
                name="secondValue"
-               placeholder = "First Value"
+               placeholder = "Second Value"
                onChange={updateFormData}
                value={formData.secondValue}
                
@@ -102,13 +91,15 @@ const Form = () => {
                 <option value="/">/</option>
              </select>
              <br /><br />
-             <button type ="submit" >Calculate!</button> 
+             <button type ="submit" className = "changeColor">Calculate!</button> 
              
              <br /> <br />
              <div> Output is : {output} </div>
+             
           </form>
-
-    )
+         
+       </div>
+    ) 
 }
 
 export default Form;

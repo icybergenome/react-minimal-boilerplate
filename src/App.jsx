@@ -2,12 +2,7 @@ import React from 'react';
 import Form from './Calculator/Form.jsx';
 
 const App = () => {
-  return (
-     <div > 
-        <Form />
-     </div>
-  
-  )
+  return (<Form />)
 }
 
 export default App;
