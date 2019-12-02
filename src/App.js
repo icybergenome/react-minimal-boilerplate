@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
+import "./index.module.scss";
 
 const App = () => {
-  return (
-    <div>AV: React Boilerplae</div>
-  )
-}
+  return <div className="title">AV: React Boilerplae</div>;
+};
 
 export default App;

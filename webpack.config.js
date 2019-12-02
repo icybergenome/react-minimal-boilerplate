@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+
 module.exports = {
   output: {
     filename: "[name].[contenthash].js",
@@ -20,6 +21,10 @@ module.exports = {
             loader: "html-loader"
           }
         ]
+      },
+      {
+        test: /\.s?css/i,
+        use: ["style-loader", "css-loader?sourceMap=true", "sass-loader"]
       }
     ]
   },
