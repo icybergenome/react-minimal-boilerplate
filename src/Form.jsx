@@ -1,13 +1,13 @@
 import React,{useState} from 'react';
-import  doIt from "./calculator.js"
+import  doIt from "./calculator.jsx"
        
 const Form = () => {
    
    const [output, setOutput]= useState(0);
-   const [formData, setFormData] = useState({})
-    let operation = "";
+   const [formData, setFormData] = useState({});
+   let operation = "";
 
-    const updateFormData = (event) => {
+   const updateFormData = (event) => {
 
       const data = {...formData};
 
@@ -17,36 +17,41 @@ const Form = () => {
           data.firstValue = event.target.value;
          break;
          case "secondValue":
-          data.secondValue = event.target.value;
+               data.secondValue = event.target.value;
          break;
          case "arithM":
          data.arithM= event.target.value;
-         if(formData.firstValue === "" || formData.secondValue === ""){
+         break;
+         
+      }
+      setFormData(data);
+     
+   }
+    const computeData = (event)=> {
+      
+           if(!formData.firstValue || !formData.secondValue){
             const err = "Please fill the above feilds first!";
-            setOutput(err);
-            
-         }
-         else {
-               if(isNaN(data.firstValue) || isNaN(data.secondValue)) {
+            setOutput(err); 
+           }
+           else {
+               if(isNaN(formData.firstValue) || isNaN(formData.secondValue)) {
                const set = "Please Enter Number in Feilds!";
                setOutput(set);
                }
                else {
-                  operation = doIt(data.firstValue,data.secondValue,data.arithM);
-                  setOutput(operation);
+                  if(formData.secondValue === '0' && formData.arithM === '/'){
+                     setOutput("Divisor should not be zero! Please enter correct divisor");
+                  } 
+                  else {
+                     operation = doIt(formData.firstValue,formData.secondValue,formData.arithM);
+                     setOutput(operation);
+                  }
+                  
                }
             
-         }
-         
+             }
+             event.preventDefault();
       }
-      setFormData(data);
-      // console.log(formData);
-      // if(formData.arithM === data.arithM){
-         
-      //    performCalulation();
-      // }
-      
-   }
       // const performCalulation = ()=> {
       //    operation = doIt(formData.firstValue,formData.secondValue,formData.arithM);
       //    setOutput(operation);
@@ -63,12 +68,13 @@ const Form = () => {
       
     return (
         
-          <form name="myForm"  >
+          <form name="myForm" onSubmit={computeData}>
              <p>Enter first value:</p>
              <input
                type="text"
                name="firstValue"
                onChange={updateFormData}
+               value={formData.firstValue}
                
              />
              <p>Enter second value:</p>
@@ -76,11 +82,11 @@ const Form = () => {
                type="text"
                name="secondValue"
                onChange={updateFormData}
+               value={formData.secondValue}
                
              />  
-              <br /> <br />
-              
-             <select name="arithM" onChange={updateFormData}>
+              <br /> <br /> 
+             <select name="arithM" onChange={updateFormData} value={formData.arithM}>
 
                 <option value="">Select One Option!</option>
                 <option value="+">+</option>
@@ -88,8 +94,8 @@ const Form = () => {
                 <option value="*">*</option>
                 <option value="/">/</option>
              </select>
-             <br />
-             {/* <button type ="submit"> Click to get Answer!</button>  */}
+             <button type ="submit">Calculate!</button> 
+             
              <br /> <br />
              <div> Output is : {output} </div>
           </form>
