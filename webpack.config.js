@@ -20,6 +20,10 @@ module.exports = {
             loader: "html-loader"
           }
         ]
+      },
+      {
+        test: /\.s?css/i,
+        use: ["style-loader", "css-loader?sourceMap=true", "sass-loader"]
       }
     ]
   },

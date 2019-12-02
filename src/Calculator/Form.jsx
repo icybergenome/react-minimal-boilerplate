@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import  doIt from "./calculator.jsx"
+import "./index.module.scss"
        
 const Form = () => {
    
@@ -67,34 +68,41 @@ const Form = () => {
       //     setOutput(result);
       
     return (
-        
-          <form name="myForm" onSubmit={computeData}>
+      //   <p>Calculator!</p>
+          <form name="myForm" onSubmit={computeData} >
+             <h1 className="heading">Calculator!</h1>
              <p>Enter first value:</p>
+             <label>
              <input
                type="text"
                name="firstValue"
+               placeholder = "First Value"
                onChange={updateFormData}
                value={formData.firstValue}
-               
              />
+             </label>
+             <label>
              <p>Enter second value:</p>
              <input
                type="text"
                name="secondValue"
+               placeholder = "First Value"
                onChange={updateFormData}
                value={formData.secondValue}
                
-             />  
+             />  </label>
               <br /> <br /> 
+              
              <select name="arithM" onChange={updateFormData} value={formData.arithM}>
 
-                <option value="">Select One Option!</option>
+                <option value="">Choose Any One Option!</option>
                 <option value="+">+</option>
                 <option value="-">-</option>
                 <option value="*">*</option>
                 <option value="/">/</option>
              </select>
-             <button type ="submit">Calculate!</button> 
+             <br /><br />
+             <button type ="submit" >Calculate!</button> 
              
              <br /> <br />
              <div> Output is : {output} </div>
