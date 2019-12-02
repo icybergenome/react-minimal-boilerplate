@@ -22,14 +22,20 @@ const Form = () => {
          case "arithM":
          data.arithM= event.target.value;
          if(formData.firstValue === "" || formData.secondValue === ""){
-            const err = "Please fill the above two feilds first!";
+            const err = "Please fill the above feilds first!";
             setOutput(err);
             
          }
          else {
-
-            operation = doIt(data.firstValue,data.secondValue,data.arithM);
-            setOutput(operation);
+               if(isNaN(data.firstValue) || isNaN(data.secondValue)) {
+               const set = "Please Enter Number in Feilds!";
+               setOutput(set);
+               }
+               else {
+                  operation = doIt(data.firstValue,data.secondValue,data.arithM);
+                  setOutput(operation);
+               }
+            
          }
          
       }
