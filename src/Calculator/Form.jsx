@@ -56,11 +56,11 @@ const Form = () => {
      
     return (
       <div className="setPosition">
-          <form name="myForm" onSubmit={computeData} >
+          <form name="myForm" onSubmit={computeData} align="center">
              
              <h1 className="heading">Calculator!</h1>
-             <p>Enter first value:</p>
-             <label>
+
+             <label><p>Enter first value:</p></label>
              <input
                className="field1"
                type="text"
@@ -69,9 +69,8 @@ const Form = () => {
                onChange={updateFormData}
                value={formData.firstValue}
              />
-             </label>
-             <label>
-             <p>Enter second value:</p>
+             
+             <label><p>Enter second value:</p></label>
              <input
                className="field2"
                type="text"
@@ -80,7 +79,7 @@ const Form = () => {
                onChange={updateFormData}
                value={formData.secondValue}
                
-             />  </label>
+             />  
               <br /> <br /> 
               
              <select className="selectColor" name="arithM" onChange={updateFormData} value={formData.arithM}>
