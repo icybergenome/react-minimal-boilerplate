@@ -6,12 +6,40 @@
 .setPosition{
  display: flex;
  justify-content: center ;
-
- .field1{
-     border: 1px solid gray;
+position: fixed;
+ padding-top:100px ;
+ padding-left: 512px;
+ padding-right: 100px;
+ padding-bottom: 100px;
+  
+input[type=text]:focus{
+    border: 2px solid blue;
+}
+.field1{
+     border: 1px solid blue;
  }
  .field1:hover {
-     border:1px solid blue;
+     border:2px solid black;
   }
+.field2{
+    border: 1px solid blue;
 }
- 
+.field2:hover {
+    border:2px solid black;
+ }
+ .selectColor{
+     color: 1px solid green;
+ }
+.changeColor{
+    color: black;
+    background-color: blue;
+    border: 2px solid green;
+    cursor: pointer;
+}
+.changeColor:hover {
+
+        background-color: #110557;
+        border: 2px solid blue;
+ }
+
+}

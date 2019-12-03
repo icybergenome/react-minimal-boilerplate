@@ -73,6 +73,7 @@ const Form = () => {
              <label>
              <p>Enter second value:</p>
              <input
+               className="field2"
                type="text"
                name="secondValue"
                placeholder = "Second Value"
@@ -82,7 +83,7 @@ const Form = () => {
              />  </label>
               <br /> <br /> 
               
-             <select name="arithM" onChange={updateFormData} value={formData.arithM}>
+             <select className="selectColor" name="arithM" onChange={updateFormData} value={formData.arithM}>
 
                 <option value="">Choose Any One Option!</option>
                 <option value="+">+</option>
@@ -91,7 +92,7 @@ const Form = () => {
                 <option value="/">/</option>
              </select>
              <br /><br />
-             <button type ="submit" className = "changeColor">Calculate!</button> 
+             <label><button type ="submit" className = "changeColor">Calculate!</button> </label>
              
              <br /> <br />
              <div> Output is : {output} </div>
