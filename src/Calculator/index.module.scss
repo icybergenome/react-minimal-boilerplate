@@ -1,14 +1,15 @@
 @import "../theme.scss";
  
+
 .heading{
    color:  $title-color;
 }
 .setPosition{
+ 
+ min-height: 100vh;
  display: flex;
  justify-content: center;
- 
- 
-
+ align-items: center;
 
 input[type=text]:focus{
      border: $feildFocus-border;
@@ -18,10 +19,11 @@ input[type=text]:focus{
    
 }
 .field1{
-     border: $feild-border;
-     border-left:none;
-     border-right:none;
-     border-top:none;
+    padding: 6px 0 7px;
+    border: $feild1;
+    border-left:none;
+    border-right:none;
+    border-top:none;
      
  }
  .field1:hover {
@@ -31,10 +33,11 @@ input[type=text]:focus{
      border-top:none; 
   }
 .field2{
-     border: $feild-border;
-     border-left:none;
-     border-right:none;
-     border-top:none;
+    padding: 6px 0 7px;
+    border: $feild1;
+    border-left:none;
+    border-right:none;
+    border-top:none;
     
 }
 .field2:hover {
@@ -48,9 +51,8 @@ input[type=text]:focus{
      color: $feildFocus-border;
  }
 .changeColor{
-     color: $feildHover-border;
-     background-color: $title-color;
-     border: $feildFocus-border;
+     
+     background-color: $borderColor;
      cursor: pointer;
      border-radius: 5px;
 }
@@ -58,9 +60,6 @@ input[type=text]:focus{
 
      background-color: $backColor;
      border: $feildHover-border;
-     border-left:none;
-     border-right:none;
-     border-top:none;
      border-radius: 5px;
         
  }
