@@ -5,45 +5,64 @@
 }
 .setPosition{
  display: flex;
- justify-content: center ;
- margin-top: 100px;
- height: 300px;
-// position: relative;
+ justify-content: center;
+ 
+ 
 
- //  border: $feild-border;
-//  padding-top:100px ;
-//  padding-left: 512px;
-//  padding-right: 100px;
-//  padding-bottom: 100px;
-  
+
 input[type=text]:focus{
-    border: $feildFocus-border;
+     border: $feildFocus-border;
+     border-left:none;
+     border-right:none;
+     border-top:none;
+   
 }
 .field1{
      border: $feild-border;
+     border-left:none;
+     border-right:none;
+     border-top:none;
+     
  }
  .field1:hover {
      border: $feildHover-border;
+     border-left:none;
+     border-right:none;
+     border-top:none; 
   }
 .field2{
-    border: $feild-border;
+     border: $feild-border;
+     border-left:none;
+     border-right:none;
+     border-top:none;
+    
 }
 .field2:hover {
-    border: $feildHover-border;
+     border: $feildHover-border;
+     border-left:none;
+     border-right:none;
+     border-top:none;
+    
  }
  .selectColor{
      color: $feildFocus-border;
  }
 .changeColor{
-    color: $feildHover-border;
-    background-color: $title-color;
-    border: $feildFocus-border;
-    cursor: pointer;
+     color: $feildHover-border;
+     background-color: $title-color;
+     border: $feildFocus-border;
+     cursor: pointer;
+     border-radius: 5px;
 }
 .changeColor:hover {
 
-        background-color: $backColor;
-        border: $feildHover-border;
+     background-color: $backColor;
+     border: $feildHover-border;
+     border-left:none;
+     border-right:none;
+     border-top:none;
+     border-radius: 5px;
+        
  }
 
 }

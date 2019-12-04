@@ -57,7 +57,7 @@ const Form = () => {
     return (
       <div className="setPosition">
           <form name="myForm" onSubmit={computeData} align="center">
-             
+             <div className="divCentre">
              <h1 className="heading">Calculator!</h1>
 
              <label><p>Enter first value:</p></label>
@@ -95,7 +95,7 @@ const Form = () => {
              
              <br /> <br />
              <div> Output is : {output} </div>
-             
+             </div>
           </form>
          
        </div>
