@@ -57,12 +57,12 @@ const Form = () => {
     return (
       <div className="setPosition">
           <form name="myForm" onSubmit={computeData} align="center">
-             <div className="divCentre">
+             
              <h1 className="heading">Calculator!</h1>
 
              <label><p>Enter first value:</p></label>
              <input
-               className="field1"
+               className="fieldDisplay"
                type="text"
                name="firstValue"
                placeholder = "First Value"
@@ -72,7 +72,7 @@ const Form = () => {
              
              <label><p>Enter second value:</p></label>
              <input
-               className="field2"
+               className="fieldDisplay"
                type="text"
                name="secondValue"
                placeholder = "Second Value"
@@ -91,11 +91,12 @@ const Form = () => {
                 <option value="/">/</option>
              </select>
              <br /><br />
-             <label><button type ="submit" className = "changeColor">Calculate!</button> </label>
+             <label><button type ="submit" className = "buttonColor">
+                <span className="hoverColor">Calculate!</span>
+                </button> </label>
              
              <br /> <br />
              <div> Output is : {output} </div>
-             </div>
           </form>
          
        </div>
