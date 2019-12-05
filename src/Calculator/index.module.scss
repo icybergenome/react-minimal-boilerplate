@@ -12,10 +12,11 @@
  align-items: center;
 
 input[type=text]:focus{
-     border: $feildFocus-border;
-     border-left:none;
-     border-right:none;
-     border-top:none;
+    
+    
+     border: 3px solid #d579e7;
+     border-radius: 4px;
+     background-color:#fff;
    
 }
 .fieldDisplay{
@@ -32,7 +33,10 @@ input[type=text]:focus{
      border-top:none; 
   }
  .selectColor{
-     color: $feildFocus-border;
+    border: $feildHover-border;
+    border-left:none;
+    border-right:none;
+    border-top:none;
  }
 .buttonColor{
      background-color: $borderColor;
