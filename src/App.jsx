@@ -1,8 +1,13 @@
-import React from 'react';
-import Form from './Calculator/Form.jsx';
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Routes from './Routing/Routes'
 
 const App = () => {
-  return (<Form />)
+  return (
+    <Router>
+      <Routes />
+    </Router>
+  )
 }
 
 export default App;
