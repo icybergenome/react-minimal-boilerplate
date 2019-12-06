@@ -20,11 +20,11 @@ input[type=text]:focus{
      border: 3px solid #d579e7;
      border-radius: 4px;
      background-color:#fff;
-     text-align: left;
-     display: inline-block;
+     
    
 }
 .fieldDisplay{
+    display: block;
     padding: 6px 0 7px;
     border: $feild1;
     border-left:none;
@@ -44,10 +44,9 @@ input[type=text]:focus{
     border-right:none;
     border-top:none;
     background-color: DodgerBlue;
+    display: block;
  }
- .selectColor select {
-    display: none; /*hide original SELECT element: */
-  }
+
 .buttonColor{
      background-color: $borderColor;
      text-transform: uppercase;
@@ -55,9 +54,12 @@ input[type=text]:focus{
      padding: 6px 16px;
      cursor: pointer;
      border-radius: 4px;
+     display: block;
+    
 }
 .buttonColor:hover {
      background-color: $backColor;
+     
      text-transform: uppercase;
      border : $buttonBorder;
      padding: 6px 16px;
