@@ -56,7 +56,7 @@ const Form = () => {
      
     return (
       <div className="setPosition">
-          <form name="myForm" onSubmit={computeData} align="center">
+          <form name="myForm" onSubmit={computeData} >
              
              <h1 className="heading">Calculator!</h1>
 

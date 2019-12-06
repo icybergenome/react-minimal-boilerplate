@@ -10,7 +10,10 @@
  display: flex;
  justify-content: center;
  align-items: center;
-
+form {
+    min-width:  400px;
+    text-align: center;
+}
 p {
     text-align: left;
     display: block;
