@@ -13,12 +13,15 @@
 
 p {
     text-align: left;
+    display: block;
 }
 input[type=text]:focus{
 
      border: 3px solid #d579e7;
      border-radius: 4px;
      background-color:#fff;
+     text-align: left;
+     display: inline-block;
    
 }
 .fieldDisplay{
@@ -35,11 +38,16 @@ input[type=text]:focus{
      border-top:none; 
   }
  .selectColor{
+    // display:flex;
     border: $feildHover-border;
     border-left:none;
     border-right:none;
     border-top:none;
+    background-color: DodgerBlue;
  }
+ .selectColor select {
+    display: none; /*hide original SELECT element: */
+  }
 .buttonColor{
      background-color: $borderColor;
      text-transform: uppercase;
