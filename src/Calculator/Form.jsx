@@ -96,7 +96,7 @@ const Form = () => {
                 </button> </label>
              
              <br /> <br />
-             <div> Output is : {output} </div>
+             <div className="outputArea"> Output is : {output} </div>
           </form>
          
        </div>
