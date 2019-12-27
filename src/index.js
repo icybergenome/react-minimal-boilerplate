@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
+import Guess from './GuessNumber'
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Guess />, document.getElementById('root'));
