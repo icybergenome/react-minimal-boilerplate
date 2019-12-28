@@ -1,26 +1,26 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+const random = () => {
+  return Math.floor(Math.random() * 100);
+    
+};
+const secret = random();
+let attempts = 0;
+const calculateattempts =() =>{
+  attempts++;
+};
 const Guess = () => {
-    const random = () => {
-        return Math.floor(Math.random() * 100);
-    };
-    const secret = random();
-    const input =(number)=>{
-
-        console.log(number.target.value);
-        return number.target.value;
-    };
-    const check = (event) =>{
-      console.log("random number is " + secret);
+      const [status, setStatus] = useState("");
+      calculateattempts();
+      const check = (event) =>{
       event.preventDefault();
       let number = parseInt(form.firstName.value);
       if(number === secret)
       {
-        alert("congratulations");
+        setStatus(`Congrats You guessed that right on attempt number ${attempts}`);
         return 0;
       }
-      let result = number > secret ? alert(`Enter number less than ${number}`) : alert(`Enter number greater than ${number}`); 
-      return result;
+      let result = number > secret ? setStatus(`Enter number less than ${number}`) : setStatus(`Enter number greater than ${number}`) ; 
+      
     }
 
   return (
@@ -35,7 +35,7 @@ const Guess = () => {
       
       
     </form>
-    <div name = "status">Status: </div>
+    <div name = "status">Status: {status}</div>
     </div>
   )
 }
