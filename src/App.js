@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./index.module.scss";
+import style from "./index.module";
 
 const App = () => {
-  return <div className="title">AV: React Boilerplae</div>;
+  return <div className={style.title}>AV: React Boilerplae</div>;
 };
 
 export default App;
