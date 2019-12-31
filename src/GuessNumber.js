@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import style from './guessnumber.module';
 const random = () => {
   return Math.floor(Math.random() * 100);
     
@@ -24,12 +25,12 @@ const Guess = () => {
     }
 
   return (
-   <div name = "main">
+   <div name = "main" className ={style.border}>
     <form name ="form" onSubmit={check}>
       <div>
           Guess the Number
       </div>
-      Enter Number between 0 & 100: <input type ="text" name = "firstName"></input>
+      Enter Number between 0 & 100: <br></br><input type ="text" name = "firstName"></input>
       <br></br>
       Check: <button type="submit">Check</button>
       

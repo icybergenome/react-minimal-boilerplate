@@ -1,10 +1,12 @@
 import React from 'react';
 import Guess from './GuessNumber';
+import style from './index.module.scss';
+
 
 const App = () => {
     
   return (
-    <div>AV: React Boilerplae
+    <div className = {style.title}>AV: React Boilerplae
         <Guess />
     </div>
     

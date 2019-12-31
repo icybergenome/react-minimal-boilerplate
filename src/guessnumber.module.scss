@@ -1,0 +1,19 @@
+$title-color: blue;
+
+body {
+   background-color: azure;
+   margin: 0;
+  }
+.border{
+  color:  $title-color;
+  font-size: xx-large;
+  text-align: center;
+
+  border-width: thin;
+  border : 2px solid black;
+ 
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+ 
+}
