@@ -25,18 +25,22 @@ const Guess = () => {
     }
 
   return (
-   <div name = "main" className ={style.border}>
-    <form name ="form" onSubmit={check}>
-      <div>
-          Guess the Number
-      </div>
-      Enter Number between 0 & 100: <br></br><input type ="text" name = "firstName"></input>
-      <br></br>
-      Check: <button type="submit">Check</button>
+   <div name = "main" className ={style.container}>
+     <div className={style.wrapper}>
+        <form name ="form" onSubmit={check}>
+          <div>
+              Guess the Number
+          </div>
+          Enter Number between 0 & 100: <br></br><input type ="text" name = "firstName"></input>
+          <br></br>
+          Check: <button type="submit" className ={style.checkbtn}>Check</button>
+          
+          
+        </form>
+        <div name = "status">Status: {status}</div>
+
+     </div>
       
-      
-    </form>
-    <div name = "status">Status: {status}</div>
     </div>
   )
 }

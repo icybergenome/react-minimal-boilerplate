@@ -6,7 +6,8 @@ import style from './index.module.scss';
 const App = () => {
     
   return (
-    <div className = {style.title}>AV: React Boilerplae
+    <div>
+        <div className={style.title}>AV: Boilerplate</div>
         <Guess />
     </div>
     

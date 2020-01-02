@@ -1,19 +1,28 @@
 $title-color: blue;
 
-body {
-   background-color: azure;
-   margin: 0;
-  }
-.border{
-  color:  $title-color;
-  font-size: xx-large;
-  text-align: center;
+.container{
+  height: calc(100vh - 43px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  border-width: thin;
-  border : 2px solid black;
- 
-  display:flex;
-  flex-direction:column;
-  flex-wrap: wrap;
- 
+  .wrapper {
+    color:  $title-color;
+    font-size: xx-large;
+    border-width: thin;
+    border : 2px solid black;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .checkbtn{
+    color : white;
+    background-color: cornflowerblue;
+    padding: 10px;
+    border-radius: 15px;
+
+  }
+
+
 }
