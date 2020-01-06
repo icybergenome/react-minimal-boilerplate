@@ -1,28 +1,38 @@
 $title-color: blue;
 
-.container{
+.container {
   height: calc(100vh - 43px);
   display: flex;
   justify-content: center;
   align-items: center;
 
   .wrapper {
-    color:  $title-color;
+    color: $title-color;
     font-size: xx-large;
     border-width: thin;
-    border : 2px solid black;
+    border: 2px solid black;
     display: flex;
     flex-direction: column;
     text-align: center;
     padding: 20px;
   }
-  .checkbtn{
-    color : white;
+  .checkbtn {
+    color: white;
     background-color: cornflowerblue;
     padding: 10px;
     border-radius: 15px;
-
+    
   }
+}
+.guessandhome {
+  color: white;
+  background-color: #0080ff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: medium;
 
 
+  &:hover {
+    background-color: #004d99;
+  }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import Guess from './GuessNumber';
-import style from './index.module.scss';
+import Guess from './Containers/Guess-the-number/GuessNumber';
+import style from '../src/index.module.scss';
 
 
 const App = () => {
