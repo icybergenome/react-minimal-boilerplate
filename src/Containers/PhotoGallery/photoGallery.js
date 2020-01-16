@@ -1,18 +1,26 @@
 import React,{useEffect, useState} from 'react';
 import { useHistory } from "react-router-dom";
+import Modal from 'react-responsive-modal';
 import "../Calculator/index.module.scss";
-
 
 export default function HomeButton() {
     let history = useHistory();
     const [output, setOutput]= useState([]);
-    
-  //   useEffect(()=>{
-  //     alert("Welcome to Photo Gallery!");
-  //  }, []);
+    const [open,setOpen] = useState(false);
+    const [link,setLink] = useState("");
+ 
+  const onOpenModal = (e) => {
+    const link = e;
+    setLink(link);
+    setOpen(true );
+  }
+ 
+  const onCloseModal = () => {
+    setOpen(false);
+  }
 
-    useEffect(()=>{
-    
+
+    useEffect(()=>{ 
       fetch("https://jsonplaceholder.typicode.com/photos")
       .then(res=>res.json())
       .then((result)=>{
@@ -24,13 +32,20 @@ export default function HomeButton() {
         history.push("/");
        }
     const display = ()=>{
-     console.log(output)
+    //  console.log(output)
       return output.map((value, index) =>{
-        if(index<20){
+        if(index<=20){
           return <div key={index} className="displayImage">
-          <img src={value.thumbnailUrl} alt="Picture" className="displayImageHover"/>
-            <a className="displayTitle">{value.title}</a>
-       </div>
+             <div className="outDiv"> 
+               <img onClick={() =>  onOpenModal(value.thumbnailUrl)} src={value.thumbnailUrl} alt="Picture" className="displayImageHover"/>
+               <div className="middle">
+                 <div className="text">Hello World!</div>
+               </div>
+            </div>
+        
+             <div className="displayTitle">{value.title}</div>
+           
+          </div>
         }
       });
     }
@@ -39,7 +54,9 @@ export default function HomeButton() {
     <div>
       <button type="button" className = "galleryColor"   onClick={goHome}> Back To Home!</button>
       <div className = "displayImageMainDiv">{display()}</div>
-      
+      <Modal open={open}  onClose={onCloseModal} center>
+          <img src={link} alt="imageE" className="modelImage"/>  
+      </Modal>
     </div>
    )
   }

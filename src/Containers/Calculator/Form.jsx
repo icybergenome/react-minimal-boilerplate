@@ -5,9 +5,9 @@ import "./index.module.scss";
 
 
 const Form = () => {
-   useEffect(()=>{
-      alert("Welcome to Calculator!");
-   }, []);
+//    useEffect(()=>{
+//       alert("Welcome to Calculator!");
+//    }, []);
    const [output, setOutput]= useState(0);
    const [formData, setFormData] = useState({});
    let operation = "";

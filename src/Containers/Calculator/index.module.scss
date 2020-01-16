@@ -129,31 +129,66 @@
 .displayImageMainDiv{
      display: flex;
      flex-wrap: wrap;
-     
-    
-}
+     justify-content: center;
+
 .displayImage{
-    // opacity: 0.5;
-    width: 20%;
-    height: 25%;
     margin-top: 20px;
-    padding: 6px 16px 6px 16px;
+    padding: 16px 6px 16px 6px;
     
 }
 .displayImageHover:hover {
-    
-    //  padding: 6px 6px 6px 6px;
-    //  width: 110%;
-    //  height: 20%;
-     opacity: 0.5;
+     opacity: 1;
      transition: 0.3s;
-    
 }
+
 .displayTitle{
-     display: flex;
+    
+     white-space: nowrap; 
+     width: 140px; 
      overflow: hidden;
-     white-space: nowrap;
-     text-overflow: ellipsis;
-     opacity: 1.0;
-     
+     text-overflow: ellipsis; 
+}
+.outDiv {
+    position: relative;
+    width: 100%;
+ 
+}
+  .displayImageHover {
+    opacity: 0.5;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .outDiv:hover .displayImageHover {
+    opacity: 1;
+  }
+  
+  .outDiv:hover .middle {
+    opacity: 1;
+  }
+  
+  .text {
+
+    font-size: 16px;
+    padding: 6px 32px;
+  }
+
+}
+.modelImage{
+    widows: 250px;
+    height: 250px;
 }
