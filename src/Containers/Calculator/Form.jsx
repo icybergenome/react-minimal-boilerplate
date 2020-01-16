@@ -1,12 +1,17 @@
-import React,{useState} from 'react';
-import  doIt from "./calculator.jsx"
-import styles from "./index.module.scss"
-       
+import React,{useState, useEffect} from 'react';
+import { useHistory } from "react-router-dom";
+import  doIt from "./calculator.js";
+import "./index.module.scss";
+
+
 const Form = () => {
-   
+   useEffect(()=>{
+      alert("Welcome to Calculator!");
+   }, []);
    const [output, setOutput]= useState(0);
    const [formData, setFormData] = useState({});
    let operation = "";
+   let history = useHistory();
 
    const updateFormData = (event) => {
 
@@ -28,6 +33,10 @@ const Form = () => {
       setFormData(data);
      
    }
+  
+   const goHome =()=> {
+       history.push("/");
+      }
     const computeData = (event)=> {
       
       if(!formData.firstValue || !formData.secondValue){
@@ -56,7 +65,9 @@ const Form = () => {
      
     return (
       <div className="setPosition">
-          <form name="myForm" onSubmit={computeData} >
+               
+         <form name="myForm" onSubmit={computeData} >
+            <button type="button" className = "buttonColorBlack" onClick={goHome}> Go Home</button>
              
              <h1 className="heading">Calculator!</h1>
 
@@ -98,7 +109,7 @@ const Form = () => {
              <br /> <br />
              <div className="outputArea"> Output is : {output} </div>
           </form>
-         
+          {/* {alert("Welcome to Calculator!")} */}
        </div>
     ) 
 }
