@@ -19,7 +19,6 @@ export default function HomeButton() {
     setOpen(false);
   }
 
-
     useEffect(()=>{ 
       fetch("https://jsonplaceholder.typicode.com/photos")
       .then(res=>res.json())
@@ -36,15 +35,20 @@ export default function HomeButton() {
       return output.map((value, index) =>{
         if(index<=20){
           return <div key={index} className="displayImage">
+            <div className="displayCardImage">
              <div className="outDiv"> 
                <img onClick={() =>  onOpenModal(value.thumbnailUrl)} src={value.thumbnailUrl} alt="Picture" className="displayImageHover"/>
                <div className="middle">
                  <div className="text">Hello World!</div>
                </div>
-            </div>
+             </div>
         
              <div className="displayTitle">{value.title}</div>
-           
+             <h3>Paragraph!</h3>
+             <p className="displayParagraph">This paragraph contains a lot of lines in the source code,
+               but the browser ignores it.
+              </p>
+           </div>
           </div>
         }
       });
