@@ -164,8 +164,8 @@
 
 .displayImage{
     
-    margin-top: 20px;
-    padding: 16px 16px 16px 16px;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
     
 }
 .displayImageHover:hover {
@@ -173,8 +173,9 @@
      transition: 0.3s;
 }
 .displayCardImage{
-    background-color: whitesmoke;
+    background-color: $homeButtonColor;
     border: 3px;
+    border-radius: 5px;
     padding: 16px 16px 16px 16px;
 }
 
@@ -190,10 +191,11 @@
 .displayParagraph{
     
      width: 140px; 
+     height: 120;
     //  white-space: nowrap; 
     //  overflow: hidden;
     //  text-overflow: ellipsis; 
-     padding: 16px 16px 16px 16px;
+     padding: 6px 6px 6px 6px;
 }
 }
 .outDiv {
