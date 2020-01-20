@@ -45,7 +45,9 @@ export default function HomeButton() {
         
              <div className="displayTitle">{value.title}</div>
              <h3>Paragraph!</h3>
-             <p className="displayParagraph">This paragraph contains a lot of lines in the source code,
+             <p className="displayParagraph">
+               Welcome to class commpunent!
+               This paragraph contains a lot of lines in the source code,
                but the browser ignores it.
               </p>
            </div>
