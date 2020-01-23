@@ -1,0 +1,30 @@
+
+.container
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%);
+    text-align: center;
+    background-color: rgba(97, 124, 39, 0.534);
+
+
+h1
+{
+    background-color: rgba(54, 54, 148, 0.342);}
+  
+}
+
+
+.status
+{
+    color: saddlebrown;
+    font: 1em sans-serif;
+    font-weight: 900;
+}
+.submit
+{
+    background-color: black;
+    color: white;
+}
+  

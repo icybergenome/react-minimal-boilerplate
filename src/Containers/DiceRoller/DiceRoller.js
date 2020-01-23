@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import  React, { useState, useEffect } from 'react';
+import style from './DiceRoller.module.scss'
+
 
 
 let ran1;
@@ -74,21 +76,24 @@ const handleinput = handle =>
         
             }  
     }
-    return (
-        <form name="GuessNumber" onSubmit={handleinput} >
+    return (<div className={style.container} >
+        <form  name="GuessNumber" onSubmit={handleinput} >
 
             <h1>Enter the numbers to Guess</h1>
             <input 
                 value={enterdata}
                 type="text" name="numbers" maxLength="3" onChange={check} >
-            </input><br></br>
-            <input type="submit"></input>
-            <br/>
+            </input><br></br><br></br>
+            <input className={style.submit} type="submit"></input>
+            <br/><br></br>
            
-            <div>status: {result}<br></br>
+            <div className={style.status}>Status: {result}<br></br>
          </div>
+        
           
         </form>
+        </div>
+        
     )
     
 }
