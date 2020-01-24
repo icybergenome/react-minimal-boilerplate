@@ -1,5 +1,7 @@
 import React from 'react'
 import { useHistory} from "react-router-dom";
+import styles from '../DiceRoller/DiceRoller.module.scss'
+
 
 
 
@@ -12,8 +14,8 @@ export default function() {
       history.push("/dice-roller");
     }
   return (
-    <div>Welcome to Home<br></br>
-      <button onClick={Click}>Click to play game </button>
+    <div className= {styles.click}>Welcome to Home<br></br>
+      <button  onClick={Click}>Click to play game </button>
     </div>
   )
 }
