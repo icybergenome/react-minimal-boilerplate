@@ -1,21 +1,5 @@
 import  React, { useState, useEffect } from 'react';
-import styles from '../DiceRoller/DiceRoller.module.scss'
-
-    
-// const viewer =()=>{
-// let [ album, changeAlbum ] = useState("");
-
-// const getData =()=>{
-//         const fetchData = async () =>{
-//         const respone = await axios.get("https://my-json-server.typicode.com/icybergenome/av-placeholder-data/    changeAlbum(response.data)
-//     }
-//     return(
-//         <div>
-//             <p></p>{album}
-//         </div>
-//     )}};
-    
-    
+import styles from '../DiceRoller/DiceRoller.module.scss'   
 export default function Example() {
      let [ album, changeAlbum ] = useState("");
     
