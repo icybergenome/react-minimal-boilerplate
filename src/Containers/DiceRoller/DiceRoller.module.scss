@@ -39,3 +39,48 @@ h1
     font-size: 2rem;
 }
   
+
+//for Progile Styling
+
+.Items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    // justify-content: flex-end;
+    padding: 50px;
+    background-image:radial-gradient(rgb(5, 4, 94),rgb(141, 103, 231));
+      
+}
+
+.overall{
+    
+    background-image: radial-gradient(rgba(92, 10, 10, 0.198),rgba(121, 24, 24, 0.842)
+    );
+
+    padding: 20px;
+}
+.img{
+    width: 200px;
+    height: 200px;
+}
+.user{
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    color: rgb(68, 39, 14);
+}
+.title{
+    white-space:nowrap; 
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width: 150px;
+}
+.title:hover{
+    overflow: visible;
+}
+
+.id{
+    text-align: center;
+    font-size: 1rem;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import DiceRoller from '../DiceRoller/DiceRoller'
+ import ProfileViewer from '../Profile Viewer/ProfileViewer'
 import {
   Switch,
   Route
@@ -10,7 +11,8 @@ export default function() {
   return (
     <Switch>
       <Route path="/" exact><Home /></Route>
-      <Route path="/dice-roller"><DiceRoller /></Route>      
+      <Route path="/dice-roller"><DiceRoller /></Route>
+      <Route path="/profile-viewer"><ProfileViewer /></Route>
     </Switch>
     
   )
