@@ -15,7 +15,7 @@ export default function Example() {
 
 
     return (
-        <div className={styles.Items}>
+        <div className={styles.flex}>
             {album.map((item, i) => (
                 <AlbumCard CardInfo={item} key={i} />  
             ))
@@ -25,28 +25,4 @@ export default function Example() {
     )}
 
 
-    // export default class ProfileViewer extends Component {
-    //     // state = {
-    //     //     album: []
-    //     // }
-    //     constructor() {
-    //         super();
-    //         this.state = {
-    //             album: []
-    //         }
-    //     }
-
-    //     // Component Lifecycle methods i.e. ComponentDidMount ComponentDidUpdate
-    //     render() {
-    //         this.setState({ album: ..... })
-    //         return (
-    //             <div className={styles.Items}>
-    //                 {album.map((item, i) => (
-    //                     <AlbumCard CardInfo={item} key={i} />  
-    //                 ))
-    //                 }
-                
-    //             </div>
-    //         )
-    //     }
-    // }
+    
