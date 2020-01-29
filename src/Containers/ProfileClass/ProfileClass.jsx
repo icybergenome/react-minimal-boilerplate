@@ -7,25 +7,23 @@ export default class Profileclass extends Component {
       constructor() {
         super();
         this.state = {
-            album: [],second:''
+            album: [],second:0
         };
-    }
-
-    componentDidMount() {
-        fetch("https://my-json-server.typicode.com/icybergenome/av-placeholder-data/albums")
-        .then(response => response.json())
-        .then(data => this.setState({album : data})
-     )
-     {
-        setInterval(() => this.tick(), 1000);
-        }
-
     }
     tick(){
         let i=1
         this.setState({second: i++})
     }
-
+  
+      
+        componentDidMount() {
+        fetch("https://my-json-server.typicode.com/icybergenome/av-placeholder-data/albums")
+        .then(response => response.json())
+        .then(data => this.setState({album : data})) 
+        setInterval(() => this.tick(), 1000)
+       
+    }
+    
     componentDidMount()
     render() {
         return (
@@ -38,5 +36,3 @@ export default class Profileclass extends Component {
        </div>
         )}
     }
-
-
