@@ -4,9 +4,6 @@ import styles from '../DiceRoller/DiceRoller.module.scss'
 import Button from '@material-ui/core/Button';
 
 
-
-
-
 export default function() {
   
     let history=useHistory();
@@ -15,7 +12,7 @@ export default function() {
       history.push("/dice-roller");
     }
     const Profiles =() =>{
-      history.push("/Profiles")
+      history.push("/profile-class")
     }
   return (
     <div className= {styles.click}>Welcome to Home<br></br>
