@@ -1,6 +1,8 @@
   import React from 'react'
   import DiceRoller from '../DiceRoller/DiceRoller'
   import Crud from '../Crud/crudmain.jsx'
+  import Data from '../fetchdata.jsx'
+
 import {
   Switch,
   Route
@@ -12,7 +14,7 @@ export default function() {
     <Switch>
       <Route path="/" exact><Home /></Route>
       <Route path="/dice-roller"><DiceRoller /></Route>
-       {/* <Route path="/profile-viewer"><ProfileViewer /></Route> */}
+       <Route path="/profile-viewer"><Data/></Route>
       <Route path="/profile-class"><Crud /></Route>
     </Switch>
     

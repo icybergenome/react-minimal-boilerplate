@@ -1,5 +1,4 @@
 import  React from 'react';
-import styles from './AlbumCard.module.scss'
 
 
 
@@ -7,10 +6,11 @@ const Profiles = (props) => {
     const { ProfileInfo } = props
     return (<div >
         <div >    
-            <p >{CardInfo.userId }</p>
-            <p > { CardInfo.id } </p>
-            <img  src={CardInfo.pic}/>
-            <p >{CardInfo.title }</p>
+            <p >{ProfileInfo.id }</p>
+            <p > { ProfileInfo.email } </p>
+            <img  src={ProfileInfo.profilePic}/>
+            <p >{ProfileInfo.active }</p>
+            <p >{ProfileInfo.name }</p>
             
         </div>
         </div>

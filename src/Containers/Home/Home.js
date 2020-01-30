@@ -14,11 +14,15 @@ export default function() {
     const Profiles =() =>{
       history.push("/profile-class")
     }
+    const Fetch =()=>{
+      history.push("/profile-viewer")
+    }
   return (
     <div className= {styles.click}>Welcome to Home<br></br>
        <Button variant="contained" color="secondary" onClick={Click}>Click To Play Game</Button>
        <br></br>
       <Button variant="contained" onClick={Profiles}>Click To View Profiles</Button>
+      <Button variant="contained" onClick={Fetch}>Check Fetch Data</Button>
     </div>
   )
 }
