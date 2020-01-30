@@ -1,5 +1,6 @@
 import React from 'react'
 import DiceRoller from '../DiceRoller/DiceRoller'
+// import Profiles from '../Profiles.jsx/index.js.js'
 import {
   Switch,
   Route
@@ -11,6 +12,7 @@ export default function() {
     <Switch>
       <Route path="/" exact><Home /></Route>
       <Route path="/dice-roller"><DiceRoller /></Route>      
+      {/* <Route path="/Profiles"><Profiles /></Route> */}
     </Switch>
     
   )

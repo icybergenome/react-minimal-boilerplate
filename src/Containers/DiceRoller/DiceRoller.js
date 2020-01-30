@@ -1,5 +1,7 @@
 import  React, { useState, useEffect } from 'react';
 import style from './DiceRoller.module.scss'
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -80,11 +82,10 @@ const handleinput = handle =>
         <form  name="GuessNumber" onSubmit={handleinput} >
 
             <h1>Enter the numbers to Guess</h1>
-            <input 
-                value={enterdata}
-                type="text" name="numbers" maxLength="3" onChange={check} >
-            </input><br></br><br></br>
-            <input className={style.submit} type="submit"></input>
+            <TextField value={enterdata} name="numbers" maxLength="3" onChange={check} id="standard-basic" label="Enter the numbers here" />
+            <br></br><br></br>
+
+            <Button variant="contained" color="primary" type="submit" href="#contained-buttons">Submit</Button>
             <br/><br></br>
            
             <div className={style.status}>Status: {result}<br></br>
