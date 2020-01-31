@@ -9,6 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Styles from './crud.module.scss'
 import Button from '@material-ui/core/Button';
+import Modal from '../../Containers/Modal/UpdateData.jsx'
+
+
 
 
 const useStyles = makeStyles({
@@ -20,29 +23,25 @@ const useStyles = makeStyles({
   }
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-export default function DenseTable() {
+export default function DenseTable(props) {
+  const { FetchedData } = props
+  const Profiles= {FetchedData}
   const classes = useStyles();
-
   return (<div className={Styles.container} >
+    
+    <div>
+    <Modal/ >
+    </div>
+    
     <TableContainer className={classes.paper} component={Paper}>  
     <Button  className={Styles.button} variant="contained" color="secondary">Create New</Button>
+    
 
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Id</TableCell>
+            <TableCell></TableCell>
+            <TableCell align="right">Id</TableCell>
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Active</TableCell>
@@ -50,17 +49,18 @@ export default function DenseTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
+          {FetchedData.map((row,i) => (
+            <TableRow >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.i}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
+              
+              <TableCell align="right">{row.id}</TableCell>
+              <TableCell align="right">{row.email}</TableCell>
+              <TableCell align="right">{row.name}</TableCell>
+              <TableCell align="right">{row.active}</TableCell>
+              <TableCell align="right" ><img className={Styles.Tableimg} src={row.profilePic}></img></TableCell>
+            </TableRow>))}
         </TableBody>
       </Table>
     </TableContainer>

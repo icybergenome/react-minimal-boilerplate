@@ -15,7 +15,7 @@ export default function() {
       history.push("/profile-class")
     }
     const Fetch =()=>{
-      history.push("/profile-viewer")
+      history.push("/ui-table")
     }
   return (
     <div className= {styles.click}>Welcome to Home<br></br>

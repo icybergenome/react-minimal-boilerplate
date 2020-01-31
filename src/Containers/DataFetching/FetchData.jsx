@@ -1,10 +1,12 @@
 import  React, { useState, useEffect} from 'react';
-import Profiles from './profileinfo.jsx'
-
+import Table from '../../Components/Table/DisplayUserData.jsx'
 
     
 export default function Fetching() {
-     let [ profile, changeProfile ] = useState([]);
+        
+      
+
+        let [ profile, changeProfile ] = useState([]);
     
      useEffect(()=>{
         fetch("https://crud-customers-app.herokuapp.com/customers")
@@ -17,10 +19,12 @@ export default function Fetching() {
    
 
     return (
-        <div >
-            {profile.map((item, i) => (
+        <div>
+            {/* {profile.map((item, i) => (
                 <Profiles ProfileInfo={item} key={i} />  
             ))
-             } 
+             }  */}
+
+             <Table  FetchedData={profile}/>
         </div>
     )}

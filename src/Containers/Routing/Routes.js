@@ -1,7 +1,7 @@
   import React from 'react'
   import DiceRoller from '../DiceRoller/DiceRoller'
-  import Crud from '../Crud/crudmain.jsx'
-  import Data from '../fetchdata.jsx'
+  import Crud from '../DataFetching/FetchData.jsx'
+ 
 
 import {
   Switch,
@@ -14,8 +14,8 @@ export default function() {
     <Switch>
       <Route path="/" exact><Home /></Route>
       <Route path="/dice-roller"><DiceRoller /></Route>
-       <Route path="/profile-viewer"><Data/></Route>
-      <Route path="/profile-class"><Crud /></Route>
+       
+      <Route path="/ui-table"><Crud /></Route>
     </Switch>
     
   )
