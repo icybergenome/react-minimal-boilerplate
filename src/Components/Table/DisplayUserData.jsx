@@ -7,11 +7,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Styles from './crud.module.scss'
+import Styles from './Crud.module.scss'
 import Button from '@material-ui/core/Button';
-import Modal from '../../Containers/Modal/UpdateData.jsx'
-
-
+import Fab from '@material-ui/core/Fab';
+import EditIcon from '@material-ui/icons/Edit';
+import MaterialTable from 'material-table';
 
 
 const useStyles = makeStyles({
@@ -23,18 +23,15 @@ const useStyles = makeStyles({
   }
 });
 
-export default function DenseTable(props) {
-  const { FetchedData } = props
-  const Profiles= {FetchedData}
+  export default function DenseTable(props) {
+  const { FetchedData,Button} = props
+  // const Profiles= {FetchedData}
   const classes = useStyles();
   return (<div className={Styles.container} >
     
-    <div>
-    <Modal/ >
-    </div>
-    
-    <TableContainer className={classes.paper} component={Paper}>  
-    <Button  className={Styles.button} variant="contained" color="secondary">Create New</Button>
+ 
+   <TableContainer className={classes.paper} component={Paper}>  
+
     
 
       <Table className={classes.table} size="small" aria-label="a dense table">
@@ -46,13 +43,14 @@ export default function DenseTable(props) {
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Active</TableCell>
             <TableCell align="right">ProfilePic</TableCell>
+            <TableCell align="right">Edit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {FetchedData.map((row,i) => (
-            <TableRow >
-              <TableCell component="th" scope="row">
-                {row.i}
+          {FetchedData.map((row, k) => (
+            <TableRow  key = {`customer-${k}`} >
+              <TableCell  component="th" scope="row">
+
               </TableCell>
               
               <TableCell align="right">{row.id}</TableCell>
@@ -60,10 +58,15 @@ export default function DenseTable(props) {
               <TableCell align="right">{row.name}</TableCell>
               <TableCell align="right">{row.active}</TableCell>
               <TableCell align="right" ><img className={Styles.Tableimg} src={row.profilePic}></img></TableCell>
-            </TableRow>))}
+              <TableCell align="right">  <Fab color="secondary" aria-label="edit"> 
+              <EditIcon />
+              </Fab>
+              </TableCell>
+          </TableRow>))}
         </TableBody>
       </Table>
     </TableContainer>
+  
     </div>
   );
 }

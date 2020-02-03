@@ -1,6 +1,7 @@
   import React from 'react'
   import DiceRoller from '../DiceRoller/DiceRoller'
   import Crud from '../DataFetching/FetchData.jsx'
+  import NewTable from '../Editabletable.jsx'
  
 
 import {
@@ -14,6 +15,7 @@ export default function() {
     <Switch>
       <Route path="/" exact><Home /></Route>
       <Route path="/dice-roller"><DiceRoller /></Route>
+   
        
       <Route path="/ui-table"><Crud /></Route>
     </Switch>
