@@ -1,13 +1,13 @@
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import Routes from './Containers/Routing/Routes.js'
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Containers/Routing/Routes';
 
 const App = () => {
   return (
     <Router>
       <Routes />
     </Router>
-  )
-}
+  );
+};
 
 export default App;
