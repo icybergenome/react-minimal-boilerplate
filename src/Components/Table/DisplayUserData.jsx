@@ -12,6 +12,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Styles from './Crud.module.scss';
+// import ForUpdateData from '../Modal/UpdateData';
+
 // import ForEditModal from '../Modal/UpdateData';
 
 const useStyles = makeStyles({
@@ -24,14 +26,13 @@ const useStyles = makeStyles({
 });
 
 export default function DenseTable(props) {
-  const { FetchedData, ButtonTesting } = props;
-  // const DeleteRow = index => {
-  //   const modifieddata = FetchedData.splice(index, 1);
-  //   console.log('@@@', modifieddata);
-  // };
-
-  // const Profiles= {FetchedData}
+  const { FetchedData, EditRow } = props;
   const classes = useStyles();
+
+  const Deletion = row => {
+    props.DeleteRow(row.id);
+  };
+
   return (
     <div className={Styles.container}>
       <TableContainer className={classes.paper} component={Paper}>
@@ -54,7 +55,6 @@ export default function DenseTable(props) {
           <TableBody>
             {FetchedData.map((row, index) => (
               <TableRow key={index}>
-                {/* <ForEditModal Customerinfo={row} key={index} /> */}
                 <TableCell align="right">{row.id}</TableCell>
                 <TableCell align="right">{row.email}</TableCell>
                 <TableCell align="right">{row.name}</TableCell>
@@ -71,18 +71,16 @@ export default function DenseTable(props) {
                   />
                 </TableCell>
                 <TableCell align="right">
-                  {' '}
-                  <Fab
-                    onClick={ButtonTesting}
-                    color="secondary"
-                    aria-label="edit"
-                  >
-                    <EditIcon />
+                  <Fab color="secondary" aria-label="edit">
+                    <EditIcon onClick={EditRow} />
                   </Fab>
                 </TableCell>
                 <TableCell align="right">
-                  {' '}
-                  <IconButton aria-label="delete" className={classes.margin}>
+                  <IconButton
+                    onClick={() => Deletion(row)}
+                    aria-label="delete"
+                    className={classes.margin}
+                  >
                     <DeleteIcon fontSize="small" />
                   </IconButton>
                 </TableCell>

@@ -49,6 +49,15 @@ export default function FormDialog(props) {
     props.PostData(Data);
   };
 
+  const OnCreateFunction = () => {
+    CreatedData();
+    onClose();
+  };
+
+  // const EditRow = index => {
+  //   console.log('@@@', index);
+  // };
+
   return (
     <div>
       <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
@@ -100,7 +109,7 @@ export default function FormDialog(props) {
           <Button onClick={onClose} color="secondary">
             Cancel
           </Button>
-          <Button type="submit" color="primary" onClick={CreatedData}>
+          <Button type="submit" color="primary" onClick={OnCreateFunction}>
             Create
           </Button>
         </DialogActions>

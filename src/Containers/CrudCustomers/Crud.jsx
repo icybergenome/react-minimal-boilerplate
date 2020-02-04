@@ -5,25 +5,50 @@ import Table from '../../Components/Table/DisplayUserData';
 import UserModal from '../../Components/Modal/UpdateData';
 import Styles from '../../Components/Table/Crud.module.scss';
 
-export default function Fetching(props) {
+export default function Fetching() {
   const [openModal, setOpenModal] = useState(false);
   const [profile, changeProfile] = useState([]);
-  const [DataForPost] = props;
-
   useEffect(() => {
     fetch('https://crud-customers-app.herokuapp.com/customers')
       .then(response => response.json())
       .then(data => changeProfile(data));
   }, []);
-  console.log(DataForPost);
   // Post request
-  const PostData = aaaa => {
-    console.log('@@@@@@@@2', aaaa);
+
+  const PostData = NewData => {
+    fetch('https://crud-customers-app.herokuapp.com/customers', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify(NewData),
+    })
+      .then(response => response.json())
+      // eslint-disable-next-line no-unused-vars
+      .then(PostedData =>
+        fetch('https://crud-customers-app.herokuapp.com/customers')
+          .then(response => response.json())
+          .then(data => changeProfile(data)),
+      );
   };
-  //   body: JSON.stringify(Data),
-  // })
-  //   .then(response => response.json())
-  //   .then(data => console.log('new data is', data));
+  const DeleteRow = id => {
+    fetch(`https://crud-customers-app.herokuapp.com/customers/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      // eslint-disable-next-line no-unused-vars
+      .then(() =>
+        fetch('https://crud-customers-app.herokuapp.com/customers')
+          .then(response => response.json())
+          .then(data => changeProfile(data)),
+      );
+  };
 
   const setModal = () => {
     setOpenModal(true);
@@ -49,7 +74,7 @@ export default function Fetching(props) {
         PostData={PostData}
         // PostData={PostData}
       />
-      <Table FetchedData={profile} />
+      <Table DeleteRow={DeleteRow} FetchedData={profile} />
     </div>
   );
 }
