@@ -91,6 +91,7 @@ const Dice = () => {
 
         <div className={style.status}>
           Status: {result}
+          {/* <br /> */}
           <br />
         </div>
       </form>
