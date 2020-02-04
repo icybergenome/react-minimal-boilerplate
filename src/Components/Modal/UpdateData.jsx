@@ -6,17 +6,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+// import ForRowEditing from '../Table/DisplayUserData';
 
 // import ForUpdate from '../../Containers/CrudCustomers/Crud';
-
-// const NewData = () => {
-//   const CreateData = {
-//     email: assignAddress,
-//     name: assignName,
-//     active: assignActive,
-//     profilepic: assignProfilePic,
-//   };
-// };
 
 export default function FormDialog(props) {
   const [assignName, changeAssignName] = useState('');
@@ -53,13 +45,21 @@ export default function FormDialog(props) {
     CreatedData();
     onClose();
   };
-
+  // Editng of Rows
+  // const rowEditing = () => {
+  //   console.log('@@@@', 'This Button is working');
+  // setModal();
   // const EditRow = index => {
   //   console.log('@@@', index);
+  // };
+  // const rowEditing = () => {
+  //   setModal();
   // };
 
   return (
     <div>
+      {/* <ForRowEditing rowEditing={rowEditing} /> */}
+
       <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>

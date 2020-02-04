@@ -26,13 +26,22 @@ const useStyles = makeStyles({
 });
 
 export default function DenseTable(props) {
-  const { FetchedData, EditRow } = props;
+  const { FetchedData, setModal } = props;
   const classes = useStyles();
 
   const Deletion = row => {
     props.DeleteRow(row.id);
   };
 
+  const rowEditing = row => {
+    setModal();
+    console.log({
+      email: row.email,
+      name: row.name,
+      active: row.active,
+      id: row.id,
+    });
+  };
   return (
     <div className={Styles.container}>
       <TableContainer className={classes.paper} component={Paper}>
@@ -71,8 +80,12 @@ export default function DenseTable(props) {
                   />
                 </TableCell>
                 <TableCell align="right">
-                  <Fab color="secondary" aria-label="edit">
-                    <EditIcon onClick={EditRow} />
+                  <Fab
+                    onClick={() => rowEditing(row)}
+                    color="secondary"
+                    aria-label="edit"
+                  >
+                    <EditIcon />
                   </Fab>
                 </TableCell>
                 <TableCell align="right">

@@ -33,6 +33,7 @@ export default function Fetching() {
           .then(data => changeProfile(data)),
       );
   };
+  // Delete Request
   const DeleteRow = id => {
     fetch(`https://crud-customers-app.herokuapp.com/customers/${id}`, {
       method: 'DELETE',
@@ -49,6 +50,7 @@ export default function Fetching() {
           .then(data => changeProfile(data)),
       );
   };
+  //
 
   const setModal = () => {
     setOpenModal(true);
@@ -72,9 +74,10 @@ export default function Fetching() {
         open={openModal}
         onClose={onCloseModal}
         PostData={PostData}
+
         // PostData={PostData}
       />
-      <Table DeleteRow={DeleteRow} FetchedData={profile} />
+      <Table setModal={setModal} DeleteRow={DeleteRow} FetchedData={profile} />
     </div>
   );
 }
