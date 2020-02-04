@@ -16,8 +16,13 @@ export default function FormDialog(props) {
   const [assignActive, changeAssignActive] = useState('');
   const [assignProfilePic, changeAssignProfilePic] = useState('');
   const { open, onClose } = props;
+  const reg1 = /[A-Z]/gm;
+
   const Names = e => {
-    changeAssignName(e.target.value);
+    if (e.target.value.match(reg1)) {
+      changeAssignName(e.target.value);
+      console.log('@@@@', assignName);
+    }
   };
 
   const Emails = e => {

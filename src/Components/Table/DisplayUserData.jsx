@@ -13,7 +13,6 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Styles from './Crud.module.scss';
 // import ForUpdateData from '../Modal/UpdateData';
-
 // import ForEditModal from '../Modal/UpdateData';
 
 const useStyles = makeStyles({

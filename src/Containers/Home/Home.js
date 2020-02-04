@@ -19,7 +19,7 @@ export default function() {
     <div className={styles.click}>
       Welcome to Home <br />
       <Button variant="contained" color="secondary" onClick={Click}>
-        Click To Play 
+        Click To Play Game
       </Button>
       <br />
       <Button variant="contained" onClick={Profiles}>
