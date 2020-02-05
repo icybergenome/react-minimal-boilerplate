@@ -14,7 +14,6 @@ export default function() {
       <Route path="/dice-roller">
         <DiceRoller />
       </Route>
-
       <Route path="/ui-table">
         <Crud />
       </Route>

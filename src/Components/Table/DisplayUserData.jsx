@@ -57,7 +57,7 @@ export default function DenseTable(props) {
           </TableHead>
           <TableBody>
             {FetchedData.map((row, index) => (
-              <TableRow key={index}>
+             <button> <TableRow key={index}>
                 <TableCell align="right">{row.id}</TableCell>
                 <TableCell align="right">{row.email}</TableCell>
                 <TableCell align="right">{row.name}</TableCell>

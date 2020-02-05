@@ -6,10 +6,25 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 // import ForRowEditing from '../Table/DisplayUserData';
 
 // import ForUpdate from '../../Containers/CrudCustomers/Crud';
-
+const useStyles = makeStyles(theme => ({
+  button: {
+    display: 'block',
+    marginTop: theme.spacing(2),
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
 export default function FormDialog(props) {
   const [assignName, changeAssignName] = useState('');
   const [assignAddress, changeAssignAddress] = useState('');
@@ -17,39 +32,31 @@ export default function FormDialog(props) {
   const [assignProfilePic, changeAssignProfilePic] = useState('');
   const [update, setUpdate] = useState(false);
   const { open, onClose, userData } = props;
+  const [activeStatus, setActiveStatus] = useState('');
+  const [dropDown, setDropDown] = useState();
+  const classes = useStyles();
 
   const reg1 = /[A-Z]/gm;
 
   useEffect(() => {
     if (userData !== undefined) {
-      console.log('#######', userData);
       changeAssignName(userData.name);
       changeAssignAddress(userData.email);
       changeAssignActive(userData.active);
       changeAssignProfilePic(userData.profilePic);
       setUpdate(true);
-      console.log('@@@', update);
     } else {
       changeAssignName();
       changeAssignAddress();
       changeAssignActive();
       changeAssignProfilePic();
       setUpdate(false);
-      console.log('@!!!', update);
     }
   }, [userData]);
-
-  console.log({
-    email: assignAddress,
-    name: assignName,
-    active: assignActive,
-    pic: assignProfilePic,
-  });
 
   const Names = e => {
     if (e.target.value.match(reg1)) {
       changeAssignName(e.target.value);
-      console.log('@@@@', assignName);
     }
   };
 
@@ -57,9 +64,9 @@ export default function FormDialog(props) {
     changeAssignAddress(e.target.value);
   };
 
-  const Active = e => {
-    changeAssignActive(e.target.value);
-  };
+  // const Active = e => {
+  //   changeAssignActive(e.target.value);
+  // };
 
   const ProfilePic = e => {
     changeAssignProfilePic(e.target.value);
@@ -95,6 +102,19 @@ export default function FormDialog(props) {
       onClose();
     }
   };
+  const handleChange = event => {
+    setActiveStatus(event.target.value);
+    // eslint-disable-next-line no-console
+    console.log('!!!!', activeStatus);
+  };
+
+  const handleClose = () => {
+    setDropDown(false);
+  };
+
+  const handleOpen = () => {
+    setDropDown(true);
+  };
 
   return (
     <div>
@@ -129,15 +149,29 @@ export default function FormDialog(props) {
             required
             value={assignAddress}
           />
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Active Status"
-            name="Active"
-            fullWidth
-            onChange={Active}
-            value={assignActive}
-          />
+          <div>
+            <Button className={classes.button} onClick={handleOpen} />
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-controlled-open-select-label">
+                Active Status
+              </InputLabel>
+              <Select
+                labelId="demo-controlled-open-select-label"
+                id="demo-controlled-open-select"
+                open={dropDown}
+                onClose={handleClose}
+                onOpen={handleOpen}
+                value={activeStatus}
+                onChange={handleChange}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="1">True</MenuItem>
+                <MenuItem value="0">False</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
 
           <TextField
             autoFocus

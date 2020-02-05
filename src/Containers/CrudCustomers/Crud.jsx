@@ -79,7 +79,6 @@ export default function Fetching() {
     if (data && data.email) {
       setEditData(data);
     } else {
-      console.log('@@@@@@@');
       setEditData(undefined);
     }
   };
