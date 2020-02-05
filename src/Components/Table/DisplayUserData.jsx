@@ -36,6 +36,9 @@ export default function DenseTable(props) {
   const rowEditing = row => {
     setModal(row);
   };
+  const Check = () => {
+    alert('The button is working');
+  };
   return (
     <div className={Styles.container}>
       <TableContainer className={classes.paper} component={Paper}>
@@ -47,7 +50,7 @@ export default function DenseTable(props) {
           <TableHead>
             <TableRow>
               <TableCell align="right">Id</TableCell>
-              <TableCell align="right">Email</TableCell>
+              <TableCell align="right">E</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Active</TableCell>
               <TableCell align="right">ProfilePic</TableCell>
@@ -57,12 +60,20 @@ export default function DenseTable(props) {
           </TableHead>
           <TableBody>
             {FetchedData.map((row, index) => (
-             <button> <TableRow key={index}>
-                <TableCell align="right">{row.id}</TableCell>
-                <TableCell align="right">{row.email}</TableCell>
-                <TableCell align="right">{row.name}</TableCell>
-                <TableCell align="right">{row.active}</TableCell>
-                <TableCell align="right">
+              <TableRow key={index}>
+                <TableCell onClick={Check} align="right">
+                  {row.id}
+                </TableCell>
+                <TableCell onClick={Check} align="right">
+                  {row.email}
+                </TableCell>
+                <TableCell onClick={Check} align="right">
+                  {row.name}
+                </TableCell>
+                <TableCell onClick={Check} align="right">
+                  {row.active}
+                </TableCell>
+                <TableCell onClick={Check} align="right">
                   <img
                     alt="Profile"
                     className={Styles.Tableimg}
