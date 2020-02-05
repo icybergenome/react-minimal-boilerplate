@@ -12,6 +12,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Styles from './Crud.module.scss';
+
 // import ForUpdateData from '../Modal/UpdateData';
 // import ForEditModal from '../Modal/UpdateData';
 
@@ -33,13 +34,7 @@ export default function DenseTable(props) {
   };
 
   const rowEditing = row => {
-    setModal();
-    console.log({
-      email: row.email,
-      name: row.name,
-      active: row.active,
-      id: row.id,
-    });
+    setModal(row);
   };
   return (
     <div className={Styles.container}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,8 +15,36 @@ export default function FormDialog(props) {
   const [assignAddress, changeAssignAddress] = useState('');
   const [assignActive, changeAssignActive] = useState('');
   const [assignProfilePic, changeAssignProfilePic] = useState('');
-  const { open, onClose } = props;
+  const [update, setUpdate] = useState(false);
+  const { open, onClose, userData } = props;
+
   const reg1 = /[A-Z]/gm;
+
+  useEffect(() => {
+    if (userData !== undefined) {
+      console.log('#######', userData);
+      changeAssignName(userData.name);
+      changeAssignAddress(userData.email);
+      changeAssignActive(userData.active);
+      changeAssignProfilePic(userData.profilePic);
+      setUpdate(true);
+      console.log('@@@', update);
+    } else {
+      changeAssignName();
+      changeAssignAddress();
+      changeAssignActive();
+      changeAssignProfilePic();
+      setUpdate(false);
+      console.log('@!!!', update);
+    }
+  }, [userData]);
+
+  console.log({
+    email: assignAddress,
+    name: assignName,
+    active: assignActive,
+    pic: assignProfilePic,
+  });
 
   const Names = e => {
     if (e.target.value.match(reg1)) {
@@ -45,25 +73,32 @@ export default function FormDialog(props) {
     };
     props.PostData(Data);
   };
+  // eslint-disable-next-line no-shadow
+  const dataPosting = userData => {
+    const updatedData = {
+      id: userData.id,
+      email: assignAddress,
+      name: assignName,
+      active: assignActive,
+      profilePic: assignProfilePic,
+    };
+    // console.log('####', updatedData);
+    props.updatingData(updatedData);
+  };
 
   const OnCreateFunction = () => {
-    CreatedData();
-    onClose();
+    if (update) {
+      dataPosting(userData);
+      onClose();
+    } else {
+      CreatedData();
+      onClose();
+    }
   };
-  // Editng of Rows
-  // const rowEditing = () => {
-  //   console.log('@@@@', 'This Button is working');
-  // setModal();
-  // const EditRow = index => {
-  //   console.log('@@@', index);
-  // };
-  // const rowEditing = () => {
-  //   setModal();
-  // };
 
   return (
     <div>
-      {/* <ForRowEditing rowEditing={rowEditing} /> */}
+      {/* <ForRowEditing rowEditing={printingEdit} /> */}
 
       <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
@@ -75,9 +110,11 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             label="Name"
+            name="Name"
             fullWidth
             onChange={Names}
             required
+            value={assignName}
           />
 
           <TextField
@@ -90,24 +127,28 @@ export default function FormDialog(props) {
             fullWidth
             onChange={Emails}
             required
+            value={assignAddress}
           />
           <TextField
             autoFocus
             margin="dense"
             label="Active Status"
+            name="Active"
             fullWidth
             onChange={Active}
+            value={assignActive}
           />
 
           <TextField
             autoFocus
             margin="dense"
             id="Picture"
-            name="Address"
+            name="Picture"
             label="Profile Pic"
             type="email"
             fullWidth
             onChange={ProfilePic}
+            value={assignProfilePic}
           />
         </DialogContent>
         <DialogActions>
@@ -115,7 +156,7 @@ export default function FormDialog(props) {
             Cancel
           </Button>
           <Button type="submit" color="primary" onClick={OnCreateFunction}>
-            Create
+            {update ? 'Update' : 'Create'}
           </Button>
         </DialogActions>
       </Dialog>

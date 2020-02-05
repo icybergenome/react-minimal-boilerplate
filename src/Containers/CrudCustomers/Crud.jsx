@@ -8,6 +8,8 @@ import Styles from '../../Components/Table/Crud.module.scss';
 export default function Fetching() {
   const [openModal, setOpenModal] = useState(false);
   const [profile, changeProfile] = useState([]);
+  const [editData, setEditData] = useState(undefined);
+
   useEffect(() => {
     fetch('https://crud-customers-app.herokuapp.com/customers')
       .then(response => response.json())
@@ -26,8 +28,8 @@ export default function Fetching() {
       body: JSON.stringify(NewData),
     })
       .then(response => response.json())
-      // eslint-disable-next-line no-unused-vars
-      .then(PostedData =>
+
+      .then(() =>
         fetch('https://crud-customers-app.herokuapp.com/customers')
           .then(response => response.json())
           .then(data => changeProfile(data)),
@@ -50,10 +52,36 @@ export default function Fetching() {
           .then(data => changeProfile(data)),
       );
   };
-  //
+  // For Updating
+  const updatingData = updatedData => {
+    fetch(
+      `https://crud-customers-app.herokuapp.com/customers/${updatedData.id}`,
+      {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
 
-  const setModal = () => {
+        body: JSON.stringify(updatedData),
+      },
+    )
+      .then(response => response.json())
+      .then(() =>
+        fetch('https://crud-customers-app.herokuapp.com/customers')
+          .then(response => response.json())
+          .then(data => changeProfile(data)),
+      );
+  };
+
+  const setModal = data => {
     setOpenModal(true);
+    if (data && data.email) {
+      setEditData(data);
+    } else {
+      console.log('@@@@@@@');
+      setEditData(undefined);
+    }
   };
 
   const onCloseModal = () => {
@@ -74,8 +102,8 @@ export default function Fetching() {
         open={openModal}
         onClose={onCloseModal}
         PostData={PostData}
-
-        // PostData={PostData}
+        userData={editData}
+        updatingData={updatingData}
       />
       <Table setModal={setModal} DeleteRow={DeleteRow} FetchedData={profile} />
     </div>
