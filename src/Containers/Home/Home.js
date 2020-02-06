@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import {  useSelector } from 'react-redux';
 
 export default function() {
-  return (
-    <div>This is Home</div>
-  )
+  const HomeState = useSelector(state => state.Home);
+
+  return <div>Hello: {HomeState.welcomeText}</div>;
 }
