@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 export default function FormDialog(props) {
   const [assignName, changeAssignName] = useState('');
   const [assignAddress, changeAssignAddress] = useState('');
-  const [assignActive, changeAssignActive] = useState('');
+  // const [assignActive, changeAssignActive] = useState('');
   const [assignProfilePic, changeAssignProfilePic] = useState('');
   const [update, setUpdate] = useState(false);
   const { open, onClose, userData } = props;
@@ -42,13 +42,13 @@ export default function FormDialog(props) {
     if (userData !== undefined) {
       changeAssignName(userData.name);
       changeAssignAddress(userData.email);
-      changeAssignActive(userData.active);
+      setActiveStatus(userData.active);
       changeAssignProfilePic(userData.profilePic);
       setUpdate(true);
     } else {
       changeAssignName();
       changeAssignAddress();
-      changeAssignActive();
+      setActiveStatus();
       changeAssignProfilePic();
       setUpdate(false);
     }
@@ -75,7 +75,7 @@ export default function FormDialog(props) {
     const Data = {
       email: assignAddress,
       name: assignName,
-      active: assignActive,
+      active: activeStatus,
       profilePic: assignProfilePic,
     };
     props.PostData(Data);
@@ -86,7 +86,7 @@ export default function FormDialog(props) {
       id: userData.id,
       email: assignAddress,
       name: assignName,
-      active: assignActive,
+      active: activeStatus,
       profilePic: assignProfilePic,
     };
     // console.log('####', updatedData);

@@ -4,11 +4,13 @@ import Button from '@material-ui/core/Button';
 import Table from '../../Components/Table/DisplayUserData';
 import UserModal from '../../Components/Modal/UpdateData';
 import Styles from '../../Components/Table/Crud.module.scss';
+// import ToGetData from '../../Components/GetData';
 
 export default function Fetching() {
   const [openModal, setOpenModal] = useState(false);
   const [profile, changeProfile] = useState([]);
   const [editData, setEditData] = useState(undefined);
+  // const [getUserdata, setGetUserData] = useState([]);
 
   useEffect(() => {
     fetch('https://crud-customers-app.herokuapp.com/customers')
@@ -73,6 +75,19 @@ export default function Fetching() {
           .then(data => changeProfile(data)),
       );
   };
+  // ToGetData
+  // const getData = row => {
+  //   fetch(`https://crud-customers-app.herokuapp.com/customers/${row.id}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //     .then(response => response.json())
+
+  //     .then(userdata => setGetUserData(userdata));
+  // };
 
   const setModal = data => {
     setOpenModal(true);
@@ -104,7 +119,13 @@ export default function Fetching() {
         userData={editData}
         updatingData={updatingData}
       />
-      <Table setModal={setModal} DeleteRow={DeleteRow} FetchedData={profile} />
+      <Table
+        setModal={setModal}
+        DeleteRow={DeleteRow}
+        FetchedData={profile}
+        // getData={getData}
+      />
+      {/* <ToGetData getUserdata={getUserdata} /> */}
     </div>
   );
 }

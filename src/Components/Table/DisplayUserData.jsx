@@ -11,6 +11,7 @@ import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { useHistory } from 'react-router-dom';
 import Styles from './Crud.module.scss';
 
 // import ForUpdateData from '../Modal/UpdateData';
@@ -36,8 +37,12 @@ export default function DenseTable(props) {
   const rowEditing = row => {
     setModal(row);
   };
-  const Check = () => {
-    alert('The button is working');
+  // const Check = () => {
+  //   alert('The button is working');
+  // };
+  const history = useHistory();
+  const singleUserdata = row => {
+    history.push(`/ui-table/${row.id}`);
   };
   return (
     <div className={Styles.container}>
@@ -50,7 +55,7 @@ export default function DenseTable(props) {
           <TableHead>
             <TableRow>
               <TableCell align="right">Id</TableCell>
-              <TableCell align="right">E</TableCell>
+              <TableCell align="right">Em</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Active</TableCell>
               <TableCell align="right">ProfilePic</TableCell>
@@ -61,19 +66,19 @@ export default function DenseTable(props) {
           <TableBody>
             {FetchedData.map((row, index) => (
               <TableRow key={index}>
-                <TableCell onClick={Check} align="right">
+                <TableCell onClick={() => singleUserdata(row)} align="right">
                   {row.id}
                 </TableCell>
-                <TableCell onClick={Check} align="right">
+                <TableCell onClick={() => singleUserdata(row)} align="right">
                   {row.email}
                 </TableCell>
-                <TableCell onClick={Check} align="right">
+                <TableCell onClick={() => singleUserdata(row)} align="right">
                   {row.name}
                 </TableCell>
-                <TableCell onClick={Check} align="right">
+                <TableCell onClick={() => singleUserdata(row)} align="right">
                   {row.active}
                 </TableCell>
-                <TableCell onClick={Check} align="right">
+                <TableCell onClick={() => singleUserdata(row)} align="right">
                   <img
                     alt="Profile"
                     className={Styles.Tableimg}
