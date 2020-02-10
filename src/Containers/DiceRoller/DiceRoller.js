@@ -1,103 +1,96 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useSelector, useDispatch } from 'react-redux';
 import style from './DiceRoller.module.scss';
+import { Actions } from '../../store/actions/DiceRoller';
 
-let ran1;
-let ran2;
+export default function() {
+  const GenerateRandoms = useSelector(state => state.DiceRoller);
+  const dispatch = useDispatch();
 
-const random = () => {
-  ran1 = Math.ceil(Math.random() * 6);
-  ran2 = Math.ceil(Math.random() * 6);
-  console.log('randoms are', ran1, ran2);
-};
-
-const Dice = () => {
-  const [result, changeResult] = useState('');
-  const [userdata, changeUserdata] = useState();
-  const [enterdata, changeEnterdata] = useState('');
+  const generateNumbers = () => {
+    const ran1 = Math.ceil(Math.random() * 6);
+    const ran2 = Math.ceil(Math.random() * 6);
+    const data = [ran1, ran2];
+    dispatch(Actions.randomNumbers(data));
+  };
 
   useEffect(() => {
-    random();
-  }, [result]);
+    generateNumbers();
+  }, [generateNumbers.Numbers]);
+  console.log('####', GenerateRandoms.Numbers);
 
-  const check = event => {
+  const changeInput = event => {
     const reg1 = /([1-6])/g;
     const reg2 = /,/g;
 
     if (event.target.value.length === 1 && event.target.value[0].match(reg1)) {
-      changeEnterdata(event.target.value);
+      dispatch(Actions.getInput(event.target.value));
     } else if (
       event.target.value.length === 2 &&
       event.target.value[1].match(reg2) &&
       event.target.value[0].match(reg1)
     ) {
-      changeEnterdata(event.target.value);
+      dispatch(Actions.getInput(event.target.value));
     } else if (
       event.target.value.length === 3 &&
       event.target.value[2].match(reg1) &&
       event.target.value[1].match(reg2) &&
       event.target.value[0].match(reg1)
     ) {
-      changeEnterdata(event.target.value);
+      dispatch(Actions.getInput(event.target.value));
     } else if (event.target.value.length === 0) {
-      changeEnterdata('');
+      dispatch(Actions.getInput(event.target.value));
     }
+
     let data = event.target.value;
     data = data.split(',');
-    changeUserdata([data[0], data[1]]);
+    dispatch(Actions.getInput(data));
   };
 
-  const handleinput = handle => {
+  const checkResult = handle => {
     handle.preventDefault();
-    console.log(userdata);
-
     if (
-      parseInt(userdata[0], 10) === ran1 &&
-      parseInt(userdata[1], 10) === ran2
+      parseInt(GenerateRandoms.Input[0] === GenerateRandoms.Numbers[0], 10) &&
+      parseInt(GenerateRandoms.Input[1] === GenerateRandoms.Numbers[1], 10)
     ) {
-      changeResult('Winner');
-      console.log('$$$$$$$$ winner', result);
+      dispatch(Actions.checkResult('Winner'));
     } else {
-      changeResult('Try Again');
-      console.log('!!!!! lost', result);
+      dispatch(Actions.checkResult('Try Again'));
     }
   };
+  console.log('@@@@', GenerateRandoms.Input[0]);
+  console.log('Random is', GenerateRandoms.Numbers[0]);
   return (
     <div className={style.container}>
-      <form name="GuessNumber" onSubmit={handleinput}>
-        <h1>Enter the numbers to Guess</h1>
+      <form name="GuessNumber" onSubmit={checkResult}>
+        <h1> Enter The Numbers</h1>
         <TextField
-          value={enterdata}
           name="numbers"
           maxLength="3"
-          onChange={check}
+          onChange={changeInput}
           id="standard-basic"
           label="Enter the numbers here"
         />
         <br />
         <br />
-
         <Button
           variant="contained"
           color="primary"
           type="submit"
           href="#contained-buttons"
         >
-          Submit
+          Submit Guess
         </Button>
         <br />
         <br />
-
+        {GenerateRandoms.Result}
         <div className={style.status}>
-          Status: {result}
-          {/* <br /> */}
           <br />
         </div>
       </form>
     </div>
   );
-};
-
-export default Dice;
+}

@@ -1,13 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from './Containers/Routing/Routes';
+import { Provider } from 'react-redux';
+import Routes from './Routing/Routes';
+import ConfigureStore from './store/configureStore';
 
 const App = () => {
   const store = ConfigureStore();
   return (
-    <Router>
-      <Routes />
-    </Router>>>>>
+    <Provider store={store}>
+      <Router>
+        <Routes />
+      </Router>
+    </Provider>
   );
 };
 
