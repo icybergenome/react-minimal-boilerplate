@@ -12,10 +12,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import Styles from './Crud.module.scss';
-
-// import ForUpdateData from '../Modal/UpdateData';
-// import ForEditModal from '../Modal/UpdateData';
+import { Actions } from '../../store/actions/crudCustomers';
 
 const useStyles = makeStyles({
   table: {
@@ -27,19 +26,19 @@ const useStyles = makeStyles({
 });
 
 export default function DenseTable(props) {
-  const { FetchedData, setModal } = props;
+  const { setModal } = props;
   const classes = useStyles();
+  const crudCustomers = useSelector(state => state.CrudCustomers);
+  const dispatch = useDispatch();
 
   const Deletion = row => {
-    props.DeleteRow(row.id);
+    dispatch(Actions.deleting(row.id));
   };
 
   const rowEditing = row => {
     setModal(row);
   };
-  // const Check = () => {
-  //   alert('The button is working');
-  // };
+
   const history = useHistory();
   const singleUserdata = row => {
     history.push(`/ui-table/${row.id}`);
@@ -64,7 +63,7 @@ export default function DenseTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {FetchedData.map((row, index) => (
+            {crudCustomers.data.map((row, index) => (
               <TableRow key={index}>
                 <TableCell onClick={() => singleUserdata(row)} align="right">
                   {row.id}

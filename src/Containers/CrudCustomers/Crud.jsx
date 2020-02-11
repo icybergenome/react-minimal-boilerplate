@@ -1,93 +1,21 @@
 // /* eslint-disable import/no-cycle */
 import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
-import Table from '../../Components/Table/DisplayUserData';
-import UserModal from '../../Components/Modal/UpdateData';
+import { useDispatch } from 'react-redux';
+import Table from '../../Components/Table/crudTable';
+import UserModal from '../../Components/Modal/crudModal';
 import Styles from '../../Components/Table/Crud.module.scss';
-// import ToGetData from '../../Components/GetData';
+import { Actions } from '../../store/actions/crudCustomers';
 
 export default function Fetching() {
   const [openModal, setOpenModal] = useState(false);
-  const [profile, changeProfile] = useState([]);
+
   const [editData, setEditData] = useState(undefined);
-  // const [getUserdata, setGetUserData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('https://crud-customers-app.herokuapp.com/customers')
-      .then(response => response.json())
-      .then(data => changeProfile(data));
+    dispatch(Actions.fetching());
   }, []);
-  // Post request
-
-  const PostData = NewData => {
-    fetch('https://crud-customers-app.herokuapp.com/customers', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-
-      body: JSON.stringify(NewData),
-    })
-      .then(response => response.json())
-
-      .then(() =>
-        fetch('https://crud-customers-app.herokuapp.com/customers')
-          .then(response => response.json())
-          .then(data => changeProfile(data)),
-      );
-  };
-  // Delete Request
-  const DeleteRow = id => {
-    fetch(`https://crud-customers-app.herokuapp.com/customers/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(response => response.json())
-      // eslint-disable-next-line no-unused-vars
-      .then(() =>
-        fetch('https://crud-customers-app.herokuapp.com/customers')
-          .then(response => response.json())
-          .then(data => changeProfile(data)),
-      );
-  };
-  // For Updating
-  const updatingData = updatedData => {
-    fetch(
-      `https://crud-customers-app.herokuapp.com/customers/${updatedData.id}`,
-      {
-        method: 'PUT',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify(updatedData),
-      },
-    )
-      .then(response => response.json())
-      .then(() =>
-        fetch('https://crud-customers-app.herokuapp.com/customers')
-          .then(response => response.json())
-          .then(data => changeProfile(data)),
-      );
-  };
-  // ToGetData
-  // const getData = row => {
-  //   fetch(`https://crud-customers-app.herokuapp.com/customers/${row.id}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
-  //     .then(response => response.json())
-
-  //     .then(userdata => setGetUserData(userdata));
-  // };
 
   const setModal = data => {
     setOpenModal(true);
@@ -112,20 +40,8 @@ export default function Fetching() {
       >
         New Data
       </Button>
-      <UserModal
-        open={openModal}
-        onClose={onCloseModal}
-        PostData={PostData}
-        userData={editData}
-        updatingData={updatingData}
-      />
-      <Table
-        setModal={setModal}
-        DeleteRow={DeleteRow}
-        FetchedData={profile}
-        // getData={getData}
-      />
-      {/* <ToGetData getUserdata={getUserdata} /> */}
+      <UserModal open={openModal} onClose={onCloseModal} userData={editData} />
+      <Table setModal={setModal} />
     </div>
   );
 }

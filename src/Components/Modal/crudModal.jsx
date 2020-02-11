@@ -11,10 +11,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { useDispatch } from 'react-redux';
 
-// import ForRowEditing from '../Table/DisplayUserData';
+import { Actions } from '../../store/actions/crudCustomers';
 
-// import ForUpdate from '../../Containers/CrudCustomers/Crud';
 const useStyles = makeStyles(theme => ({
   button: {
     display: 'block',
@@ -28,13 +28,14 @@ const useStyles = makeStyles(theme => ({
 export default function FormDialog(props) {
   const [assignName, changeAssignName] = useState('');
   const [assignAddress, changeAssignAddress] = useState('');
-  // const [assignActive, changeAssignActive] = useState('');
+
   const [assignProfilePic, changeAssignProfilePic] = useState('');
   const [update, setUpdate] = useState(false);
   const { open, onClose, userData } = props;
   const [activeStatus, setActiveStatus] = useState('');
   const [dropDown, setDropDown] = useState();
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const reg1 = /[A-Z]/gm;
 
@@ -64,10 +65,6 @@ export default function FormDialog(props) {
     changeAssignAddress(e.target.value);
   };
 
-  // const Active = e => {
-  //   changeAssignActive(e.target.value);
-  // };
-
   const ProfilePic = e => {
     changeAssignProfilePic(e.target.value);
   };
@@ -78,7 +75,7 @@ export default function FormDialog(props) {
       active: activeStatus,
       profilePic: assignProfilePic,
     };
-    props.PostData(Data);
+    dispatch(Actions.creating(Data));
   };
   // eslint-disable-next-line no-shadow
   const dataPosting = userData => {
@@ -89,8 +86,8 @@ export default function FormDialog(props) {
       active: activeStatus,
       profilePic: assignProfilePic,
     };
-    // console.log('####', updatedData);
-    props.updatingData(updatedData);
+
+    dispatch(Actions.updating(updatedData));
   };
 
   const OnCreateFunction = () => {
@@ -104,8 +101,6 @@ export default function FormDialog(props) {
   };
   const handleChange = event => {
     setActiveStatus(event.target.value);
-    // eslint-disable-next-line no-console
-    console.log('!!!!', activeStatus);
   };
 
   const handleClose = () => {
@@ -118,8 +113,6 @@ export default function FormDialog(props) {
 
   return (
     <div>
-      {/* <ForRowEditing rowEditing={printingEdit} /> */}
-
       <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>
