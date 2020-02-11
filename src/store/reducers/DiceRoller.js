@@ -2,26 +2,34 @@ import { ActionTypes } from '../actions/DiceRoller';
 
 const initialState = {
   Numbers: '',
-  Input: '',
   Result: '',
 };
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.RANDOM:
+    case ActionTypes.RANDOM: {
+      console.log('+++++++++', action);
       return {
         ...state,
-        Numbers: action.payload,
+        Numbers: action.data,
       };
-    case ActionTypes.INPUT:
+    }
+    case ActionTypes.RESULT: {
+      if (
+        action.payload.GeneratedNumbers[0] ===
+          parseInt(action.payload.InputData[0], 10) &&
+        action.payload.GeneratedNumbers[1] ===
+          parseInt(action.payload.InputData[1], 10)
+      ) {
+        return {
+          ...state,
+          Result: 'winner',
+        };
+      }
       return {
         ...state,
-        Input: action.payload,
+        Result: 'try again',
       };
-    case ActionTypes.RESULT:
-      return {
-        ...state,
-        Result: action.payload,
-      };
+    }
     default:
       return state;
   }
