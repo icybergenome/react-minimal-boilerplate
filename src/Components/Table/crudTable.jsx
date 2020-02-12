@@ -54,7 +54,7 @@ export default function DenseTable(props) {
           <TableHead>
             <TableRow>
               <TableCell align="right">Id</TableCell>
-              <TableCell align="right">Em</TableCell>
+              <TableCell align="right">Email</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Active</TableCell>
               <TableCell align="right">ProfilePic</TableCell>

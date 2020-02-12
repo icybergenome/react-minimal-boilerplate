@@ -31,7 +31,7 @@ export default function FormDialog(props) {
 
   const [assignProfilePic, changeAssignProfilePic] = useState('');
   const [update, setUpdate] = useState(false);
-  const { open, onClose, userData } = props;
+  const { open, onClose, userData, openBar } = props;
   const [activeStatus, setActiveStatus] = useState('');
   const [dropDown, setDropDown] = useState();
   const classes = useStyles();
@@ -94,9 +94,11 @@ export default function FormDialog(props) {
     if (update) {
       dataPosting(userData);
       onClose();
+      openBar();
     } else {
       CreatedData();
       onClose();
+      openBar();
     }
   };
   const handleChange = event => {
