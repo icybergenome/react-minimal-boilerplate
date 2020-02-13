@@ -18,7 +18,6 @@ class ProfileClass extends Component {
   componentDidMount() {
     const { fetchData } = this.props;
     fetchData();
-    // this.props.Profile();
     this.tick();
   }
 

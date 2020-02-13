@@ -7,7 +7,6 @@ let ran2;
 const random = () => {
   ran1 = Math.ceil(Math.random() * 6);
   ran2 = Math.ceil(Math.random() * 6);
-  console.log('randoms are', ran1, ran2);
 };
 
 const Dice = () => {
@@ -48,17 +47,14 @@ const Dice = () => {
 
   const handleinput = handle => {
     handle.preventDefault();
-    console.log(userdata);
 
     if (
       parseInt(userdata[0], 10) === ran1 &&
       parseInt(userdata[1], 10) === ran2
     ) {
       changeResult('Winner');
-      console.log('$$$$$$$$ winner', result);
     } else {
       changeResult('Try Again');
-      console.log('!!!!! lost', result);
     }
   };
   return (
