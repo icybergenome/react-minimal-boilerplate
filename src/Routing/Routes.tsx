@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import DiceRoller from '../Containers/DiceRoller/DiceRoller';
-import ProfileViewer from '../Containers/Profile Viewer/ProfileViewer';
-import ProfileClass from '../Containers/ProfileClass/profileClass';
+import ProfileViewer from '../Containers/Profile Viewer/fetchingData';
+import ProfileClass from '../Containers/Profile Viewer/profilesMapping';
 import Home from '../Containers/Home/Home';
 
 export default function() {
@@ -18,8 +18,8 @@ export default function() {
         <ProfileViewer />
       </Route>
       <Route path="/profile-class">
-        <ProfileClass />
-      </Route>
+        <ProfileClass /> 
+       </Route> 
     </Switch>
   );
 }

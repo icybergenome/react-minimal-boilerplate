@@ -1,14 +1,27 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, MapDispatchToPropsParam } from 'react-redux';
+import { Dispatch } from 'redux';
 import moment from 'moment';
 import AlbumCard from '../../Components/AlbumCard/AlumCard';
 import styles from '../Profile Viewer/ProfileViewer.module.scss';
 import { Actions } from '../../store/actions/profileClass';
+import { IProfileClassState }from '../../store/reducers/profileClass';
+import { IReducersState} from '../../store/reducers/rootReducer'
 
-class ProfileClass extends Component {
-  constructor() {
-    super();
+interface IProps {
+  fetchData:()=>void,
+  Profile: IProfileClassState
+}
+
+interface IState {
+  second: number
+}
+
+class ProfileClass extends Component<IProps,IState> {
+
+  constructor(props: IProps) {
+    super(props);
     this.state = {
       second: 0,
     };
@@ -21,7 +34,7 @@ class ProfileClass extends Component {
     this.tick();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps:null, prevState: { second: number; }) {
     if (prevState.second !== this.state.second) {
       setTimeout(this.tick, 1000);
     }
@@ -41,7 +54,7 @@ class ProfileClass extends Component {
         Total time on page = {this.state.second} seconds
         <div>{moment().format('MMMM Do YYYY,hh:mm:ss')}</div>
         <div className={styles.flex}>
-          {Profile.data.map((item, i) => (
+          {Profile.data.map((item: any, i: string | number) => (
             <AlbumCard CardInfo={item} key={i} />
           ))}
         </div>
@@ -50,11 +63,12 @@ class ProfileClass extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+
+const mapStateToProps = (state: IReducersState) => ({
   Profile: state.ProfileClass,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps: MapDispatchToPropsParam<any, {}> = (dispatch: Dispatch<any>) => ({
   fetchData: () => dispatch(Actions.fetching()),
 });
 

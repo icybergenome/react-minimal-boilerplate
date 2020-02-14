@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 isDevelopment = process.env.NODE_ENV !== 'production'
 
 module.exports = {
+  entry: './src/index.tsx',
   output: {
     filename: "[name].[contenthash].js",
     publicPath: "/"
@@ -11,10 +12,22 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [ 'ts-loader' ],
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: [ 'babel-loader' ],
       },
+        {
+      
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
+    },
+
       {
         test: /\.html$/,
         use: [
@@ -23,6 +36,8 @@ module.exports = {
           }
         ]
       },
+
+
       {
         test: /\.module\.s(a|c)ss$/,
           loader: [
@@ -39,7 +54,8 @@ module.exports = {
               options: {
                 sourceMap: isDevelopment 
               }
-            }
+            },
+          
           ]
       },
       {
@@ -56,8 +72,10 @@ module.exports = {
             }
           ]
       }
-    ]
+    ],
+
   },
+  
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html"
@@ -68,12 +86,12 @@ module.exports = {
     })
   ],
   mode: "development",
-  devtool: "inline-source-map",
+  devtool: "source-map",
   devServer: {
     publicPath: "/",
     historyApiFallback: true
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: [".ts", ".tsx", ".js", ".css", ".scss"]
   }
 };

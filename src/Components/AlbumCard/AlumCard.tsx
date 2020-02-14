@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import styles from './AlbumCard.module.scss';
+import { IPropTypes} from '../../utils/types'
 
-const AlbumCard = props => {
+
+const AlbumCard = (props:IPropTypes) => {
   const { CardInfo } = props;
   return (
     <div className={styles.flex}>

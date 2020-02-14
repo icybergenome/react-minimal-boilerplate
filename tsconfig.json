@@ -1,0 +1,12 @@
+{
+    "include": [ "typings", "src" ],
+    "compilerOptions": {
+        "outDir": "./public/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "es6",
+        "jsx": "react",
+        "esModuleInterop": true 
+    }
+}

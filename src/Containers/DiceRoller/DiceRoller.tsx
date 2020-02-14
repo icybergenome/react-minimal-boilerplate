@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import style from './DiceRoller.module.scss';
 
-let ran1;
-let ran2;
+let ran1:number;
+let ran2:number;
 
 const random = () => {
-  ran1 = Math.ceil(Math.random() * 6);
+  ran1= Math.ceil(Math.random() * 6);
   ran2 = Math.ceil(Math.random() * 6);
 };
 
@@ -18,7 +18,9 @@ const Dice = () => {
     random();
   }, [result]);
 
-  const check = event => {
+
+
+  const check = (event: React.ChangeEvent<HTMLInputElement>) => {
     const reg1 = /([1-6])/g;
     const reg2 = /,/g;
 
@@ -40,13 +42,13 @@ const Dice = () => {
     } else if (event.target.value.length === 0) {
       changeEnterdata('');
     }
-    let data = event.target.value;
+    let data: string | string[] = event.target.value;
     data = data.split(',');
     changeUserdata([data[0], data[1]]);
   };
 
-  const handleinput = handle => {
-    handle.preventDefault();
+  const handleinput = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     if (
       parseInt(userdata[0], 10) === ran1 &&
@@ -65,7 +67,7 @@ const Dice = () => {
           value={enterdata}
           type="text"
           name="numbers"
-          maxLength="3"
+          maxLength={3}
           onChange={check}
         />
         <br />

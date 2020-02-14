@@ -1,9 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from '../DiceRoller/DiceRoller.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { Actions } from '../../store/actions/home';
+import {IReducersState} from '../../store/reducers/rootReducer' 
 
 export default function() {
   const history = useHistory();
+  const HomeState = useSelector<IReducersState>(state  => state.Home);
+  const dispatch = useDispatch();
+  
+
 
   const Click = () => {
     history.push('/dice-roller');
@@ -19,6 +26,7 @@ export default function() {
   return (
     <div className={styles.click}>
       Welcome to Home
+     
       <br />
       <button type="button" onClick={Click}>
         Click to play game{' '}
@@ -34,3 +42,7 @@ export default function() {
     </div>
   );
 }
+
+
+
+

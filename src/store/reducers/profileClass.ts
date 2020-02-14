@@ -1,13 +1,22 @@
-import { ActionTypes } from '../actions/profileClass';
+import { ActionTypes, profileClassActions } from '../actions/profileClass';
 
-const initialState = {
+
+export interface IProfileClassState  {
+    fetchingData: boolean,
+    fetchingSuccess: boolean,
+    fetchingFailure: boolean,
+    data: string[],
+  };
+
+
+ const initialState: IProfileClassState = {
   fetchingData: false,
   fetchingSuccess: false,
   fetchingFailure: false,
   data: [],
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action:profileClassActions) => {
   switch (action.type) {
     case ActionTypes.FETCHING_DATA:
       return {

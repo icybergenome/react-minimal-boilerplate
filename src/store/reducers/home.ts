@@ -1,10 +1,14 @@
-import { ActionTypes } from '../actions/home';
+import { ActionTypes, HomeActions } from '../actions/home';
 
-const initialState = {
+export interface IHomeState {
+  welcomeText: string
+}
+
+const initialState: IHomeState = {
   welcomeText: 'Av: Boilerplate',
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: HomeActions) => {
   switch (action.type) {
     case ActionTypes.WELCOME_TEXT:
       return {
