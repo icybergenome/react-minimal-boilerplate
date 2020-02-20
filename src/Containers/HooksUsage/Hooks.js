@@ -6,9 +6,9 @@ export default function HomeButton() {
     let history = useHistory();
     const [count, setCount] = useState(0);
 
-    useEffect(()=>{ 
-      alert(count);
-    },[]);
+    // useEffect(()=>{ 
+    //   // alert(count);
+    // },[]);
     // componentDidMount(()=> {
     //   <p>You clicked {count} times</p>
     // })
@@ -21,14 +21,14 @@ export default function HomeButton() {
     //   <p>You clicked {count} times</p>
     // },[count]);
 
-    // const goHome =()=> {
-    //     history.push("/");
-    //    }
+    const goHome =()=> {
+        history.push("/");
+       }
     
   
   return (
     <div>
-      <button type="button" className = "hooksColor"   > Back To Home!</button>
+      <button type="button" className = "hooksColor"  onClick={goHome} > Back To Home!</button>
       <div>
         <p>You clicked {count} times</p>
         <button onClick={() => setCount(count + 1 )}>
