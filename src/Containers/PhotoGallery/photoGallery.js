@@ -1,68 +1,87 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState,Component} from 'react';
 import { useHistory } from "react-router-dom";
 import Modal from 'react-responsive-modal';
 import "../Calculator/index.module.scss";
 
-export default function HomeButton() {
-    let history = useHistory();
-    const [output, setOutput]= useState([]);
-    const [open,setOpen] = useState(false);
-    const [link,setLink] = useState("");
- 
-  const onOpenModal = (e) => {
-    const link = e;
-    setLink(link);
-    setOpen(true );
-  }
- 
-  const onCloseModal = () => {
-    setOpen(false);
+
+class photoGallery extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {output: {},
+                 open: false,
+                 link: ""
+                 
+                 };
+    // this.goHome = this.goHome.bind(this);
   }
 
-    useEffect(()=>{ 
+  
+    // const [output, setOutput]= useState([]);
+    // const [open,setOpen] = useState(false);
+    // const [link,setLink] = useState("");
+ 
+  // onOpenModal(e){
+  //   const link = e;
+  //   this.setState(link);
+  //   this.setState(true) ;
+  // }
+ 
+  // onCloseModal(){
+  //   this.setState(false);
+  // }
+
+    componentDidMount(){ 
       fetch("https://jsonplaceholder.typicode.com/photos")
       .then(res=>res.json())
       .then((result)=>{
-        setOutput(result)
-      })
-    },[]);
-
-    const goHome =()=> {
-        history.push("/");
-       }
-    const display = ()=>{
-    //  console.log(output)
-      return output.map((value, index) =>{
-        if(index<=20){
-          return <div key={index} className="displayImage">
-            <div className="displayCardImage">
-             <div className="outDiv"> 
-               <img onClick={() =>  onOpenModal(value.thumbnailUrl)} src={value.thumbnailUrl} alt="Picture" className="displayImageHover"/>
-               <div className="middle">
-                 <div className="text">Hello World!</div>
-               </div>
-             </div>
+        this.setState({output: result});
+        console.log(output);
+      }
+      
+    //  goHome (){
+    //   this.props.history.push("/");
+    //    }
+    //  display(){
+    // //  console.log(output)
+    // // const { output } = this.props;
+    //   return this.state.output.map((value, index) =>{
+    //     if(this.index<=20){
+    //       return <div key={this.index} className="displayImage">
+    //         <div className="displayCardImage">
+    //          <div className="outDiv"> 
+    //            <img onClick={() =>  onOpenModal(this.value.thumbnailUrl)} src={this.value.thumbnailUrl} alt="Picture" className="displayImageHover"/>
+    //            <div className="middle">
+    //              <div className="text">Hello World!</div>
+    //            </div>
+    //          </div>
         
-             <div className="displayTitle">{value.title}</div>
-             <h3>Paragraph!</h3>
-             <p className="displayParagraph">
-               Welcome to class commpunent!
-               This paragraph contains a lot of lines in the source code,
-               but the browser ignores it.
-              </p>
-           </div>
-          </div>
-        }
-      });
+    //          <div className="displayTitle">{this.value.title}</div>
+    //          <h3>Paragraph!</h3>
+    //          <p className="displayParagraph">
+    //            Welcome to class commpunent!
+    //            This paragraph contains a lot of lines in the source code,
+    //            but the browser ignores it.
+    //           </p>
+    //        </div>
+    //       </div>
+    //     }
+    //   });
+    // }
+
+   render (){
+     return (
+       <div>
+         <button type="button"   > Back To Home!</button>
+         <div>{JSON.stringify(this.state.output)}</div>
+         
+       </div>
+      );
     }
-  
-  return (
-    <div>
-      <button type="button" className = "galleryColor"   onClick={goHome}> Back To Home!</button>
-      <div className = "displayImageMainDiv">{display()}</div>
-      <Modal open={open}  onClose={onCloseModal} center>
-          <img src={link} alt="imageE" className="modelImage"/>  
-      </Modal>
-    </div>
-   )
   }
+  export default photoGallery;
+  {/* <button type="button" className = "galleryColor"   onClick={this.goHome}> Back To Home!</button> */}
+         {/* <div className = "displayImageMainDiv">{this.display()}</div>
+         <Modal open={open}  onClose={onCloseModal} center>
+             <img src={this.link} alt="imageE" className="modelImage"/>  
+         </Modal> */}

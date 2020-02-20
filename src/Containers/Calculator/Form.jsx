@@ -34,9 +34,9 @@ const Form = () => {
      
    }
   
-   const goHome =()=> {
-       history.push("/");
-      }
+   // const goHome =()=> {
+   //     history.push("/");
+   //    }
     const computeData = (event)=> {
       
       if(!formData.firstValue || !formData.secondValue){
@@ -67,7 +67,7 @@ const Form = () => {
       <div className="setPosition">
                
          <form name="myForm" onSubmit={computeData} >
-            <button type="button" className = "buttonColorBlack" onClick={goHome}> Go Home</button>
+            <button type="button" className = "buttonColorBlack" > Go Home</button>
              
              <h1 className="heading">Calculator!</h1>
 
