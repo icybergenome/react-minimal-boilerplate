@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable consistent-return */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
@@ -25,12 +26,12 @@ class HomeButton extends Component {
 
   onOpenModal(e) {
     const link = e;
-    this.setState(link);
-    this.setState(true);
+    this.setState({ link });
+    this.setState({ open: true });
   }
 
   onCloseModal() {
-    this.setState(false);
+    this.setState({ open: false });
   }
 
   goHome() {
@@ -46,10 +47,9 @@ class HomeButton extends Component {
           <div key={index} className="displayImage">
             <div className="displayCardImage">
               <div className="outDiv">
-                <image
+                <img
                   src={value.thumbnailUrl}
-                  // eslint-disable-next-line no-undef
-                  onClick={() => onOpenModal(value.thumbnailUrl)}
+                  onClick={() => this.onOpenModal(value.thumbnailUrl)}
                   alt="defaultImage"
                   className="displayImageHover"
                 />
