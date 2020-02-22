@@ -1,8 +1,17 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import '../Calculator/index.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { Actions } from '../../store/actions/home';
 
 export default function HomeButton() {
+  const HomeState = useSelector(state => state.Home);
+  const dispatch = useDispatch();
+
+  const changeText = () => {
+    dispatch(Actions.setWelcomeText('New Text'));
+  };
+
   const history = useHistory();
   const goToForm = () => {
     history.push('/Calculator');
@@ -18,6 +27,12 @@ export default function HomeButton() {
 
   return (
     <div>
+      <div>
+        <div>Hello: {HomeState.welcomeText}</div>
+        <button onClick={changeText} type="button">
+          Changer
+        </button>
+      </div>
       <header className="headerColor">
         <h1> Welcome to RaectJs!</h1>
       </header>
