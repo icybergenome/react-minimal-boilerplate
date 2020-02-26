@@ -13,6 +13,7 @@ export default function HomeButton() {
 
   return (
     <div>
+      <h1>Welcome to Hooks!</h1>
       <button type="button" className="hooksColor" onClick={goHome}>
         Back To Home!
       </button>

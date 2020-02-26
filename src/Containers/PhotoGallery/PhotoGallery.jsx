@@ -2,11 +2,13 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
+import { Actions } from '../../store/actions/photoGallery';
 import '../Calculator/index.module.scss';
 
-class HomeButton extends Component {
+class PhotoGallery extends Component {
   constructor(props) {
     super(props);
     this.state = { output: [], open: false, link: '' };
@@ -16,13 +18,13 @@ class HomeButton extends Component {
     this.display = this.display.bind(this);
   }
 
-  componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/photos')
-      .then(res => res.json())
-      .then(result => {
-        this.setState({ output: result });
-      });
-  }
+  // componentDidMount() {
+  //   fetch('https://jsonplaceholder.typicode.com/photos')
+  //     .then(res => res.json())
+  //     .then(result => {
+  //       this.setState({ output: result });
+  //     });
+  // }
 
   onOpenModal(e) {
     const link = e;
@@ -71,8 +73,14 @@ class HomeButton extends Component {
   }
 
   render() {
+    const { welcomeText } = this.props;
+    const { setText } = this.props;
+    const { setLoad } = this.props;
+    setText('Welcome to PhotoGallery!');
+    setLoad('Loading ...');
     return (
       <div>
+        <h1>{welcomeText}</h1>
         <button type="button" className="galleryColor" onClick={this.goHome}>
           Back To Home!
         </button>
@@ -84,4 +92,18 @@ class HomeButton extends Component {
     );
   }
 }
-export default withRouter(HomeButton);
+
+const mapStateToProps = state => ({
+  welcomeText: state.PhotoGallery.welcomeText,
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setText: text => dispatch(Actions.setPhotoGallery(text)),
+    setLoad: text => dispatch(Actions.setLoading(text)),
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(PhotoGallery),
+);

@@ -57,7 +57,7 @@ const Form = () => {
         <button type="button" className="buttonColorBlack" onClick={goHome}>
           Go Home
         </button>
-        <h1 className="heading">Calculator!</h1>
+        <h1 className="heading">Welcome to Calculator!</h1>
         <p>Enter first value:</p>
         <input
           className="fieldDisplay"

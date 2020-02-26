@@ -27,28 +27,34 @@ export default function HomeButton() {
 
   return (
     <div>
+      <header className="headerColor">
+        <h1> Welcome to Home Page!</h1>
+      </header>
       <div>
         <div>Hello: {HomeState.welcomeText}</div>
         <button onClick={changeText} type="button">
           Changer
         </button>
       </div>
-      <header className="headerColor">
-        <h1> Welcome to RaectJs!</h1>
-      </header>
-      <button type="button" className="homeButtonColor" onClick={goToForm}>
-        Go To Form!
-      </button>
-      <button
-        type="button"
-        className="photoGalleryColor"
-        onClick={goToPhotoGallery}
-      >
-        Go To Photo Gallery!
-      </button>
-      <button type="button" className="hooksColor" onClick={goHooks}>
-        Go To Hooks!
-      </button>
+      <div>
+        <button type="button" className="homeButtonColor" onClick={goToForm}>
+          Go To Form!
+        </button>
+      </div>
+      <div>
+        <button
+          type="button"
+          className="photoGalleryColor"
+          onClick={goToPhotoGallery}
+        >
+          Go To Photo Gallery!
+        </button>
+      </div>
+      <div>
+        <button type="button" className="hooksColor" onClick={goHooks}>
+          Go To Hooks!
+        </button>
+      </div>
     </div>
   );
 }
