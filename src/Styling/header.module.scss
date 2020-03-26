@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    background-color: dodgerblue;
+    justify-content: space-around;
+    align-items: center;
+    width: 107%;
+    position: relative;
+    top: -8px;
+    left: -82px
+}
+.container > div {
+    padding: 10px;
+    font-size: 30px;
+}
+.subcontainer{
+    display: flex;     
+}
+.subcontainer >div{
+   
+    justify-content: space-between;
+    padding: 20px;   
+}
+.btnstylng{
+    border-style: none;
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    color: white;
+    font-size: medium;
+    &:hover{
+        cursor: pointer;
+    }
+}
