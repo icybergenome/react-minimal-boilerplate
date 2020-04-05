@@ -1,5 +1,4 @@
 $title-color: blue;
-
 .container {
   height: calc(100vh - 43px);
   display: flex;
@@ -35,4 +34,24 @@ $title-color: blue;
   &:hover {
     background-color: #004d99;
   }
+}
+.imagecover{
+    width: 250px;
+    height: 250px;
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    cursor: pointer;
+}
+.image{
+  width: 250px;
+  height: 250px;
+}
+.title{
+    position: absolute;
+    width: 250px;
+    bottom: 0px;
+    background-color: black;
+    color: white;
+    padding: 5px;
 }
