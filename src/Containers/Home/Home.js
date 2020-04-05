@@ -17,8 +17,8 @@ export default function () {
 
   return (
     <div>
-      <Button props={{label : "Guess-The-Number", functions : gotoGuess, color:"primary"}} />
-      <Button props={{label: "View-Gallery", functions : gotoFetch, color:"primary"}} />      
+      <Button btnData={{label : "Guess-The-Number", functions : gotoGuess, color:"primary"}} />
+      <Button btnData={{label: "View-Gallery", functions : gotoFetch, color:"primary"}} />      
     </div>
   )
 }

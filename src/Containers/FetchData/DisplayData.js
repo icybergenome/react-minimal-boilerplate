@@ -4,7 +4,7 @@ class Display extends Component
 {
     render()
     {
-        const data = this.props.props;
+        const data = this.props.imgData;
         return(
         <div> 
         {

@@ -9,7 +9,7 @@ class Fetch extends PureComponent {
         this.state = {data: []};
         this.backToHome=this.backToHome.bind(this)
     }
-  backToHome(){
+  backToHome(){ 
         this.props.history.push('/');
   }
   componentDidMount(){
@@ -24,9 +24,9 @@ class Fetch extends PureComponent {
       return(
         <div>
              <div> 
-                 <Button props={{label: "Home", functions: this.backToHome,color:"primary"}} />
+                 <Button btnData={{label: "Home", functions: this.backToHome,color:"primary"}} />
             </div>
-            <Display props={data}/>
+            <Display imgData={data}/>
         </div>
       )
     }

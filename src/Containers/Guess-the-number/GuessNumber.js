@@ -45,10 +45,10 @@ const Guess = () => {
           </div>
           Enter Number between 0 & 100: <br></br><input type="text" name="firstName"></input>
           <br></br>
-          Check: <Button props={{label: "Check", functions: check,color:"secondary"}}/>
+          Check: <Button btnData={{label: "Check", functions: check,color:"secondary"}}/>
         </form>
         <div name="status">Status: {status}</div>
-        <div> <Button props={{label: "Home", functions: backToHome,color:"primary"}} />
+        <div> <Button btnData={{label: "Home", functions: backToHome,color:"primary"}} />
         </div>
       </div>
     </div>

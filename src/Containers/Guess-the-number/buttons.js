@@ -10,8 +10,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ContainedButtons({props}) {
-    const {label, functions,color} = props;
+export default function ContainedButtons({btnData}) {
+    const {label, functions,color} = btnData;
    
   const classes = useStyles();
 
