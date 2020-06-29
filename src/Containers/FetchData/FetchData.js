@@ -1,28 +1,38 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {PureComponent} from 'react'
 import Button from '../Guess-the-number/buttons'
 import Display from './DisplayData'
-import { useHistory } from "react-router-dom";
-import {FetchContext} from './FetchContext'
+import {withRouter} from 'react-router-dom'
+import {inject, observer} from 'mobx-react'
 
-function Fetch(){
-    const history = useHistory();
-    const [posts, setPosts] =  useContext(FetchContext);
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/photos")
-            .then(res => res.json())
-            .then(data => setPosts(data))
-            .catch(error => console.log("error"))
-    })
-    const Home = ()=>{
-        history.push("/");
+@inject('DataStore')
+@observer
+class Fetch extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.backToHome=this.backToHome.bind(this)  
     }
-    return(
-    <div>   
-         <div>
-              <Button btnData={{label: "Home", functions: Home,color:"primary"}} />
+  backToHome(){ 
+        this.props.history.push('/');
+  }
+  componentDidMount(){
+        console.log("qwe");
+        fetch("https://jsonplaceholder.typicode.com/photos")
+        .then(res => res.json())
+        .then(data =>this.props.DataStore.setData(data))
+        .catch(error => console.log("error"))
+  }
+   render() {
+    const data = this.props.DataStore.getData;
+      return(
+        <div>
+             <div> 
+                 <Button btnData={{label: "Home", functions: this.backToHome,color:"primary"}} />
+            </div>
+            <Display imgData={data}/>
         </div>
-       < Display/>
-    </div>
-    )
+      )
+    }
+
 }
-export default Fetch
+  
+export default withRouter(Fetch)

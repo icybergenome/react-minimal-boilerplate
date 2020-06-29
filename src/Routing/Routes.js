@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 import Home from '../Containers/Home/Home'
 import Guess from '../Containers/Guess-the-number/GuessNumber'
-import Fetch from '../Containers/FetchData/Fetch&Display.js'
+import Fetch from '../Containers/FetchData/FetchData'
 
 
 
