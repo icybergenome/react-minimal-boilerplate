@@ -8,6 +8,7 @@ function Fetch(){
     const history = useHistory();
     const [posts, setPosts] =  useContext(FetchContext);
     useEffect(() => {
+        
         fetch("https://jsonplaceholder.typicode.com/photos")
             .then(res => res.json())
             .then(data => setPosts(data))

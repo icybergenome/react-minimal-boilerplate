@@ -1,12 +1,13 @@
 import React, {useState, createContext} from 'react'
 
-export const FetchContext = createContext()
+const {Provider} = createContext()
 
 export const FetchProvider = (props)=>{
-     const [posts, setPosts] =  useState([]);
+    const [loadingPosts, setLoadingPosts] = useState(false)
+    const [postsData, setPostsData] =  useState([]);
     return (
-        <FetchContext.Provider value={[posts, setPosts]}>
+        <Provider value={[posts, setPosts]}>
             {props.children}
-        </FetchContext.Provider>
+        </Provider>
     )
 }
