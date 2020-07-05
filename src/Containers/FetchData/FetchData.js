@@ -15,7 +15,6 @@ class Fetch extends PureComponent {
         this.props.history.push('/');
   }
   componentDidMount(){
-        console.log("qwe");
         fetch("https://jsonplaceholder.typicode.com/photos")
         .then(res => res.json())
         .then(data =>this.props.DataStore.setData(data))
