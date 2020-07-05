@@ -5,12 +5,10 @@ class Display extends Component
     render()
     {
         const data = this.props.imgData;
-       
         return(
         <div> 
         {
             data.map(dataposts =>{
-                console.log("data is ", dataposts)
                 const {id, title, thumbnailUrl} = dataposts;
                 return(
                     <div

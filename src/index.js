@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import {Provider} from 'mobx-react'
-import DataStore from './stores/fetcheddata'
+import {Provider} from 'react-redux'
+import configurestore from './redux/store'
 
-const Root = (
-    <Provider DataStore={DataStore}>
-        <App />
-    </Provider>
-)
-
-ReactDOM.render(Root, document.getElementById('root'));
+const store = configurestore()
+console.log("store we have is", store.getState())
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

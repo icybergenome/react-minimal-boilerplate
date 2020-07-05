@@ -1,28 +1,40 @@
-import React, {PureComponent} from 'react'
+import React, {Component} from 'react'
 import Button from '../Guess-the-number/buttons'
 import Display from './DisplayData'
 import {withRouter} from 'react-router-dom'
-import {inject, observer} from 'mobx-react'
-
-@inject('DataStore')
-@observer
-class Fetch extends PureComponent {
+import {fetchData} from '../../redux/action'
+import {connect} from 'react-redux'
+import {getData, getError, pending} from '../../redux/reducer';
+class Fetch extends Component{
     constructor(props) {
+      console.log("props areeeeeeeeee ", props)
         super(props);
-        this.backToHome=this.backToHome.bind(this)  
+        this.state = {value: []};
+        this.backToHome=this.backToHome.bind(this)
+      
     }
   backToHome(){ 
         this.props.history.push('/');
   }
   componentDidMount(){
-        console.log("qwe");
-        fetch("https://jsonplaceholder.typicode.com/photos")
-        .then(res => res.json())
-        .then(data =>this.props.DataStore.setData(data))
-        .catch(error => console.log("error"))
+        const {sendTheAlert} = this.props
+        console.log("this.props", this.props)
+        sendTheAlert()
+        
+  }
+
+  shouldComponentUpdate(){
+    console.log("here")
+    console.log(this.props)
+    const { fetchingData} = this.props
+    if(fetchingData === false)
+    {
+      return true
+    }
+    return false
   }
    render() {
-    const data = this.props.DataStore.getData;
+    const data = this.state.value;
       return(
         <div>
              <div> 
@@ -34,5 +46,24 @@ class Fetch extends PureComponent {
     }
 
 }
+const mapStateToProps = (state) => {
+  const {data, fetchingData, fetchError} = state
+  console.log("data is ", data, " and status is ", fetchingData, " error is ", fetchError)
+  return {
+    data,
+    fetchingData,
+    fetchError
+
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
   
-export default withRouter(Fetch)
+  return({
+    sendTheAlert: () => {dispatch(fetchData())}
+})
+};
+
+
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Fetch)
