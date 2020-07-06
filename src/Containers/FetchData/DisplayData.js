@@ -10,7 +10,6 @@ class Display extends Component
         <div> 
         {
             data.map(dataposts =>{
-                console.log("data is ", dataposts)
                 const {id, title, thumbnailUrl} = dataposts;
                 return(
                     <div

@@ -3,15 +3,22 @@ import {observable, action, computed} from 'mobx'
 
 
 class fetcheddata {
-   @observable data = [];
 
-   @action setData = (newData) =>{
-       this.data = newData
-   }
+   @observable fetchingStatus = [{fetchingData:false, data:[], fetchError:''}];
 
-   @computed get getData(){
-       return this.data
+   
+   @action setFetchingStatus = ({fetchingData, data, fetchError}) =>{
+       this.fetchingStatus = [{
+        fetchingData, data, fetchError
+       }]
+
    }
+   @computed get getFetchingStatus(){
+       return this.fetchingStatus
+   }
+    
+
+
 }
 
 const store = new fetcheddata()
