@@ -1,54 +1,52 @@
 import React, {Component} from 'react'
 import Button from '../Guess-the-number/buttons'
 import Display from './DisplayData'
-import {withRouter} from 'react-router-dom'
-import {fetchData} from '../../redux/action'
+import {fetchData} from '../../redux/actions/fetchData'
 import {connect} from 'react-redux'
-import {getData, getError, pending} from '../../redux/reducer';
+import Loading from './Spinner'
+import ErrorBar from './Snackbar'
+import {withRouter} from 'react-router-dom'
+
 class Fetch extends Component{
     constructor(props) {
-      console.log("props areeeeeeeeee ", props)
         super(props);
-        this.state = {value: []};
+        this.state = {galleryData: []};
         this.backToHome=this.backToHome.bind(this)
-      
     }
   backToHome(){ 
         this.props.history.push('/');
   }
   componentDidMount(){
-        const {sendTheAlert} = this.props
-        console.log("this.props", this.props)
-        sendTheAlert()
-        
+        const {fetchingGallery} = this.props
+        fetchingGallery()
   }
-
-  shouldComponentUpdate(){
-    console.log("here")
-    console.log(this.props)
-    const { fetchingData} = this.props
-    if(fetchingData === false)
-    {
-      return true
-    }
-    return false
-  }
+componentDidUpdate(prevProps){  
+ if(prevProps.data !== this.props.data)
+ {
+   this.setState({galleryData: [this.props.data]})
+ }
+}
    render() {
-    const data = this.state.value;
-      return(
+    if(this.state.galleryData[0] == undefined)
+    {
+     return(<Loading />)
+    }
+    else if(this.props.fetchingData == false && this.props.fetchError !== "")
+    {
+      return(<ErrorBar error={this.props.fetchError}/>)
+    }
+    return(
         <div>
              <div> 
                  <Button btnData={{label: "Home", functions: this.backToHome,color:"primary"}} />
             </div>
-            <Display imgData={data}/>
+            <Display imgData={this.state.galleryData[0]}/>
         </div>
       )
     }
-
 }
 const mapStateToProps = (state) => {
-  const {data, fetchingData, fetchError} = state
-  console.log("data is ", data, " and status is ", fetchingData, " error is ", fetchError)
+  const {data, fetchingData, fetchError} = state.fetchData
   return {
     data,
     fetchingData,
@@ -58,12 +56,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  
   return({
-    sendTheAlert: () => {dispatch(fetchData())}
+    fetchingGallery: () => {dispatch(fetchData())}
 })
 };
-
-
-  
-export default connect(mapStateToProps, mapDispatchToProps)(Fetch)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Fetch))

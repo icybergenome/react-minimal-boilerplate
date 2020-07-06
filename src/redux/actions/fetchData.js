@@ -1,8 +1,7 @@
+
 import axios from 'axios'
-const FETCH_DATA = 'FETCH_DATA'
-const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS'
-const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE'
-      
+import { FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from "../constants"
+
 
 export const fetchData = () => {
   return function (dispatch) {
@@ -37,4 +36,3 @@ export const fetchData = () => {
           payload: error
         }
       }
-      
