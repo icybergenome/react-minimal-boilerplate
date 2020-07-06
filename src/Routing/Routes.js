@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 import Home from '../Containers/Home/Home'
 import Guess from '../Containers/Guess-the-number/GuessNumber'
-import Fetch from '../Containers/FetchData/Fetch&Display.js'
+import GalleryViewer from '../Containers/FetchData/FetchAndDisplay.js'
 
 
 
@@ -14,7 +14,7 @@ export default function () {
     <Switch>
       <Route path="/" exact><Home /></Route>
       <Route path="/guessthenumber" ><Guess /></Route>
-      <Route path="/galleryviewer" exact><Fetch /></Route>
+      <Route path="/galleryviewer" exact><GalleryViewer /></Route>
 
     </Switch>
   )
